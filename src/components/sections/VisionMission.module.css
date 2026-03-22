@@ -1,0 +1,15 @@
+.section { padding: 80px 0; background: var(--white); }
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.card { border-radius: 20px; padding: 40px 36px; transition: all 0.4s; position: relative; overflow: hidden; }
+.card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(41,91,32,0.15); }
+.watermark { position: absolute; top: -10px; right: 16px; font-family: var(--font-display); font-weight: 700; font-size: 120px; opacity: 0.06; color: var(--brand); line-height: 1; pointer-events: none; }
+.icon { width: 48px; height: 48px; border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; background: var(--pale); }
+.card h3 { font-family: var(--font-display); font-weight: 700; font-size: 20px; color: var(--forest); margin-bottom: 10px; }
+.card p { font-size: 14px; color: var(--text-body); line-height: 1.7; }
+.stat { margin-top: 12px; font-size: 13px; font-weight: 700; color: var(--brand); }
+.dark { background: var(--forest); border: 1px solid rgba(109,192,67,0.15); }
+.dark h3 { color: var(--white); }
+.dark p { color: rgba(255,255,255,0.7); }
+.dark .icon { background: rgba(109,192,67,0.15); }
+.light { background: var(--white); border-left: 4px solid var(--brand); border-top: 1px solid var(--border); border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+@media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }

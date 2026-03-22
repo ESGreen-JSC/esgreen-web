@@ -1,0 +1,24 @@
+.about { padding: 100px 0; background: var(--pale); }
+.grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 64px; align-items: start; }
+.titleAccent { color: var(--text-dark); margin-top: -8px; display: block; }
+.body { font-size: 14px; color: var(--text-body); line-height: 1.8; margin-top: 16px; }
+.body p { margin-bottom: 16px; }
+.body strong { color: var(--forest); }
+.right { position: relative; }
+.imgPlaceholder {
+  width: 100%; aspect-ratio: 4/3; border-radius: 20px;
+  background: linear-gradient(135deg, #2D6B1E, #4A9A2A);
+  display: flex; align-items: center; justify-content: center; overflow: hidden;
+}
+.statCard {
+  position: absolute; bottom: -24px; right: -16px;
+  background: rgba(255,255,255,0.85); backdrop-filter: blur(16px);
+  border-radius: 16px; padding: 20px 24px;
+  box-shadow: 0 8px 32px rgba(26,61,19,0.12); border: 1px solid rgba(255,255,255,0.3);
+}
+.statVal { font-family: var(--font-display); font-weight: 700; font-size: 20px; color: var(--forest); }
+.statLab { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+@media (max-width: 768px) {
+  .grid { grid-template-columns: 1fr; gap: 32px; }
+  .statCard { position: relative; bottom: auto; right: auto; margin-top: 16px; }
+}

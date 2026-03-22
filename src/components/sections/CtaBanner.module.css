@@ -1,0 +1,7 @@
+.wrapper { padding: 0 32px; margin: 60px 0; }
+.inner { background: linear-gradient(135deg, #1A3D13, #295B20, #1A3D13); background-size: 200% 200%; animation: gradientMove 8s ease infinite; border-radius: 24px; padding: 64px 48px; text-align: center; position: relative; overflow: hidden; }
+.glow { position: absolute; top: -80px; right: -80px; width: 300px; height: 300px; border-radius: 50%; background: radial-gradient(circle, rgba(109,192,67,0.15), transparent); animation: glowPulse 3s ease-in-out infinite; }
+.h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(28px,3vw,40px); color: var(--white); margin-bottom: 12px; line-height: 1.2; position: relative; }
+.desc { color: rgba(255,255,255,0.65); font-size: 15px; margin-bottom: 32px; max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.7; position: relative; }
+.btns { display: flex; gap: 12px; justify-content: center; position: relative; }
+@media (max-width: 768px) { .inner { padding: 40px 24px; } .btns { flex-direction: column; align-items: center; } }

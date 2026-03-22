@@ -1,0 +1,22 @@
+.contact { padding: 100px 0; background: var(--pale); }
+.grid { display: grid; grid-template-columns: 55fr 45fr; gap: 48px; align-items: stretch; }
+.h2 { font-family: var(--font-display); font-weight: 700; font-size: 28px; color: var(--forest); margin-bottom: 4px; }
+.sub { font-size: 14px; color: var(--text-muted); margin-bottom: 24px; }
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.group { margin-bottom: 16px; }
+.group label { display: block; font-size: 13px; font-weight: 600; color: var(--text-dark); margin-bottom: 6px; }
+.group input, .group textarea { width: 100%; padding: 12px 16px; border: 1px solid var(--border); border-radius: 12px; font-family: var(--font-body); font-size: 14px; color: var(--forest); transition: all 0.3s; background: var(--white); }
+.group input:focus, .group textarea:focus { outline: none; border-color: var(--brand); box-shadow: 0 0 0 3px rgba(109,192,67,0.12); }
+.formWrap { display: flex; flex-direction: column; height: 100%; }
+.formWrap form { display: flex; flex-direction: column; flex: 1; }
+.group textarea { min-height: 100px; resize: vertical; flex: 1; }
+.submit { background: var(--brand); color: var(--white); font-size: 14px; font-weight: 700; padding: 14px 32px; border: none; border-radius: 24px; cursor: pointer; width: 100%; transition: all 0.3s; box-shadow: 0 2px 12px rgba(109,192,67,0.25); }
+.submit:hover { background: var(--mid-green); transform: translateY(-1px); }
+.micro { display: flex; gap: 16px; margin-top: 12px; font-size: 12px; color: var(--text-muted); }
+.map { border-radius: 20px; overflow: hidden; background: var(--bg-scene); min-height: 280px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 14px; border: 1px solid var(--border); padding: 20px; text-align: center; }
+.formGroup_grow { flex: 1; display: flex; flex-direction: column; margin-bottom: 16px; }
+.formGroup_grow textarea { flex: 1; }
+.info { margin-top: 20px; background: var(--white); border-radius: 16px; padding: 20px 24px; border: 1px solid var(--border); }
+.infoRow { display: flex; align-items: center; gap: 10px; padding: 8px 0; font-size: 13px; color: var(--text-body); }
+.infoRow svg { flex-shrink: 0; }
+@media (max-width: 768px) { .grid { grid-template-columns: 1fr; } .row { grid-template-columns: 1fr; } .micro { flex-direction: column; gap: 4px; } }

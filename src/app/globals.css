@@ -1,26 +1,270 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Colors — exact from wireframe */
+  --brand: #6DC043;
+  --brand-dark: #4A9A2A;
+  --text-dark: #295B20;
+  --forest: #1A3D13;
+  --pale: #EDF7E6;
+  --bg-scene: #F7F9F5;
+  --mid-green: #4A9A2A;
+  --light-green: #90CF67;
+  --pale-green: #D2EDBC;
+  --text-body: #4A5445;
+  --text-muted: #A8B4A0;
+  --border: #E8EDE3;
+  --white: #FFFFFF;
+  --gold: #B89B28;
+
+  /* Typography */
+  --font-display: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --font-body: 'Nunito Sans', 'Source Sans 3', -apple-system, sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
+  color: var(--forest);
+  background: var(--white);
+  overflow-x: hidden;
+}
+
+/* ===== CONTAINER ===== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* ===== GLOBAL TYPOGRAPHY ===== */
+.section-tag {
+  font-size: 11px;
+  letter-spacing: 3px;
+  font-weight: 700;
+  color: var(--brand);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(28px, 3.5vw, 42px);
+  line-height: 1.2;
+  color: var(--forest);
+  margin-bottom: 16px;
+}
+
+.section-desc {
+  font-size: 15px;
+  color: var(--text-body);
+  line-height: 1.8;
+}
+
+/* ===== BUTTON VARIANTS ===== */
+.btn-primary {
+  background: var(--brand);
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 700;
+  padding: 14px 28px;
+  border-radius: 24px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 4px 16px rgba(109, 192, 67, 0.3);
+}
+.btn-primary:hover {
+  background: var(--mid-green);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(109, 192, 67, 0.4);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 14px 28px;
+  border-radius: 24px;
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+.btn-green-outline {
+  background: transparent;
+  color: var(--brand);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 14px 28px;
+  border-radius: 24px;
+  border: 1.5px solid var(--brand);
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.btn-green-outline:hover {
+  background: var(--pale);
+  transform: translateY(-2px);
+}
+
+/* ===== SHIMMER EFFECT ===== */
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.btn-shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  animation: shimmer 3s infinite;
+}
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* ===== PULSE EFFECT ===== */
+.btn-pulse {
+  animation: pulse 2.5s infinite;
+}
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 4px 16px rgba(109, 192, 67, 0.3); }
+  50% { box-shadow: 0 4px 24px rgba(109, 192, 67, 0.5), 0 0 40px rgba(109, 192, 67, 0.15); }
+}
+
+/* ===== WAVE DIVIDER ===== */
+.wave-divider {
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  margin-top: -1px;
+}
+.wave-divider svg {
+  width: 100%;
+  height: 48px;
+  display: block;
+}
+.wave-divider.flip {
+  transform: rotate(180deg);
+  margin-top: 0;
+  margin-bottom: -1px;
+}
+.wave-divider path {
+  animation: waveFlow 4s ease-in-out infinite;
+}
+@keyframes waveFlow {
+  0%, 100% { d: path("M0 48V16C200 0 400 32 600 24C800 16 1000 40 1200 20V48Z"); }
+  50% { d: path("M0 48V20C200 8 400 36 600 20C800 4 1000 44 1200 16V48Z"); }
+}
+
+/* ===== PRELOADER ===== */
+.preloader {
+  position: fixed;
+  inset: 0;
+  background: var(--white);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 16px;
+  transition: opacity 0.6s, visibility 0.6s;
+}
+.preloader.done {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.preloader-logo {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 24px;
+  color: var(--text-dark);
+}
+.preloader-spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid var(--pale);
+  border-top-color: var(--brand);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ===== SCROLL PROGRESS ===== */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--brand), var(--light-green));
+  z-index: 100;
+  width: 0%;
+  transition: width 0.1s;
+}
+
+/* ===== GRADIENT MOVE ===== */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ===== GLOW PULSE ===== */
+@keyframes glowPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.2); opacity: 0.6; }
+}
+
+/* ===== FLOAT BOUNCE ===== */
+@keyframes floatBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+  }
 }
