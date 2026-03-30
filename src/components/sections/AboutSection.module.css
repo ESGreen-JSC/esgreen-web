@@ -4,6 +4,7 @@
 .body { font-size: 14px; color: var(--text-body); line-height: 1.8; margin-top: 16px; }
 .body p { margin-bottom: 16px; }
 .body strong { color: var(--forest); }
+.closing { font-style: italic; color: var(--text-dark); font-weight: 600; margin-top: 8px; }
 .right { position: relative; }
 .imgPlaceholder {
   width: 100%; aspect-ratio: 4/3; border-radius: 20px;

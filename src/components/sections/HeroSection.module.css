@@ -70,16 +70,29 @@
 }
 .sub {
   font-size: 16px;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.75);
   line-height: 1.7;
-  margin-bottom: 32px;
-  max-width: 500px;
+  margin-bottom: 12px;
+  max-width: 540px;
+}
+.hook {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.3);
+  font-style: italic;
+  line-height: 1.6;
+  margin-bottom: 28px;
+  max-width: 520px;
 }
 .btns {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
   margin-bottom: 0;
+}
+.trustLine {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.4);
+  margin-top: 12px;
 }
 .micro {
   font-size: 12px;
@@ -94,9 +107,10 @@
   margin-top: 32px;
 }
 .trustLabel {
-  font-size: 11px;
-  color: rgba(255, 255, 255, 0.4);
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.75);
   font-weight: 600;
+  line-height: 1.7;
 }
 .trustLogos {
   display: flex;
@@ -112,28 +126,66 @@
   transition: all 0.3s;
 }
 .trustLogos img:hover { opacity: 1; }
-.stats {
+.partnerItem {
   display: flex;
-  gap: 32px;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+.partnerDesc {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.4);
+  text-align: center;
+  white-space: nowrap;
+  line-height: 1.4;
+}
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
   margin-top: 32px;
   padding-top: 32px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
+.credItem {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.credIcon {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(109, 192, 67, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--brand);
+}
 .statVal {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 28px;
+  font-size: 22px;
   color: var(--brand);
+  line-height: 1.2;
 }
 .statLabel {
-  font-size: 11px;
-  color: rgba(255, 255, 255, 0.5);
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.55);
   margin-top: 2px;
+  line-height: 1.5;
+}
+.credCaption {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.3);
+  font-style: italic;
+  margin-top: 16px;
 }
 
 @media (max-width: 768px) {
   .content { padding-top: 100px; padding-bottom: 60px; }
-  .stats { flex-direction: column; gap: 16px; }
+  .stats { grid-template-columns: 1fr; gap: 16px; }
   .btns { flex-direction: column; }
   .btns a { text-align: center; justify-content: center; }
 }

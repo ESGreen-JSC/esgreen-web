@@ -1,14 +1,27 @@
 'use client'
-import { useState, useEffect, createContext, useContext } from 'react'
+import { useState, useEffect, createContext, useContext, useRef } from 'react'
 import styles from './Header.module.css'
 
 // Language context
 export const LangContext = createContext<{ lang: string; setLang: (l: string) => void }>({ lang: 'vi', setLang: () => {} })
 export function useLang() { return useContext(LangContext) }
 
+const solutionsVi = [
+  { label: 'Kiểm kê khí nhà kính', href: '/giai-phap/kiem-ke-khi-nha-kinh' },
+  { label: 'Chấm điểm ESG', href: '/giai-phap/cham-diem-esg' },
+  { label: 'Tư vấn Net Zero', href: '/giai-phap/tu-van-net-zero' },
+]
+const solutionsEn = [
+  { label: 'GHG Inventory', href: '/giai-phap/kiem-ke-khi-nha-kinh' },
+  { label: 'ESG Scoring', href: '/giai-phap/cham-diem-esg' },
+  { label: 'Net Zero Consulting', href: '/giai-phap/tu-van-net-zero' },
+]
+
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [dropdownOpen, setDropdownOpen] = useState(false)
+  const dropdownRef = useRef<HTMLLIElement>(null)
   const { lang, setLang } = useLang()
 
   useEffect(() => {
@@ -17,19 +30,44 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setDropdownOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
+
+  const [pathname, setPathname] = useState('')
+  useEffect(() => {
+    setPathname(window.location.pathname)
+  }, [])
+  const isHome = pathname === '/'
+  const isSolution = pathname.startsWith('/giai-phap')
+  const isBlog = pathname.startsWith('/blog')
+
+  const solutions = lang === 'vi' ? solutionsVi : solutionsEn
+
   const navLinks = lang === 'vi' ? [
-    { label: 'Trang chủ', href: '/', active: true },
+    { label: 'Trang chủ', href: '/' },
     { label: 'Giới thiệu', href: '/#about' },
-    { label: 'Giải pháp', href: '/#services' },
     { label: 'Tin tức', href: '/blog/' },
     { label: 'Liên hệ', href: '/#contact' },
   ] : [
-    { label: 'Home', href: '/', active: true },
+    { label: 'Home', href: '/' },
     { label: 'About', href: '/#about' },
-    { label: 'Solutions', href: '/#services' },
     { label: 'News', href: '/blog/' },
     { label: 'Contact', href: '/#contact' },
   ]
+
+  function getActive(href: string) {
+    if (href === '/' && isHome) return true
+    if (href.startsWith('/blog') && isBlog) return true
+    return false
+  }
 
   return (
     <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`}>
@@ -40,11 +78,58 @@ export default function Header() {
         </a>
 
         <ul className={`${styles.navCenter} ${menuOpen ? styles.navOpen : ''}`}>
-          {navLinks.map((link) => (
+          {/* Regular links before "Giải pháp" */}
+          {navLinks.slice(0, 2).map((link) => (
             <li key={link.href}>
               <a
                 href={link.href}
-                className={link.active ? styles.active : ''}
+                className={getActive(link.href) ? styles.active : ''}
+                onClick={() => setMenuOpen(false)}
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+
+          {/* "Giải pháp" dropdown */}
+          <li className={styles.dropdown} ref={dropdownRef}>
+            <button
+              className={`${styles.dropdownToggle} ${isSolution ? styles.active : ''}`}
+              onClick={() => setDropdownOpen(!dropdownOpen)}
+              onMouseEnter={() => setDropdownOpen(true)}
+            >
+              {lang === 'vi' ? 'Giải pháp' : 'Solutions'}
+              <svg width="10" height="6" viewBox="0 0 10 6" fill="none" className={styles.dropdownArrow} style={{ transform: dropdownOpen ? 'rotate(180deg)' : 'none' }}>
+                <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
+            {dropdownOpen && (
+              <ul
+                className={styles.dropdownMenu}
+                onMouseLeave={() => setDropdownOpen(false)}
+              >
+                <li>
+                  <a href="/#services" onClick={() => { setDropdownOpen(false); setMenuOpen(false) }}>
+                    {lang === 'vi' ? 'Tổng quan giải pháp' : 'Solutions Overview'}
+                  </a>
+                </li>
+                {solutions.map((s) => (
+                  <li key={s.href}>
+                    <a href={s.href} onClick={() => { setDropdownOpen(false); setMenuOpen(false) }}>
+                      {s.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </li>
+
+          {/* Remaining links */}
+          {navLinks.slice(2).map((link) => (
+            <li key={link.href}>
+              <a
+                href={link.href}
+                className={getActive(link.href) ? styles.active : ''}
                 onClick={() => setMenuOpen(false)}
               >
                 {link.label}

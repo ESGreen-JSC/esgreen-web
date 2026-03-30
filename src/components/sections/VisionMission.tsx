@@ -14,9 +14,9 @@ export default function VisionMission() {
           </div>
           <h3>{lang === 'vi' ? 'Tầm nhìn' : 'Vision'}</h3>
           <p>{lang === 'vi'
-            ? 'Trở thành nền tảng quản trị ESG hàng đầu Việt Nam, giúp mỗi doanh nghiệp Việt chủ động đo lường, báo cáo và cải thiện hiệu suất phát triển bền vững — bằng công nghệ, dữ liệu và kinh nghiệm thực chiến.'
-            : 'Become Vietnam\'s leading ESG management platform, empowering every Vietnamese enterprise to actively measure, report, and improve sustainability performance — through technology, data, and real-world experience.'}</p>
-          <div className={styles.stat}>{lang === 'vi' ? '18–29 năm kinh nghiệm chuyên gia' : '18–29 years of expert experience'}</div>
+            ? 'Trở thành nền tảng công nghệ hỗ trợ doanh nghiệp Việt Nam đo lường, quản lý và minh bạch hóa dữ liệu phát thải trong quá trình chuyển đổi bền vững.'
+            : 'Become the technology platform that helps Vietnamese enterprises measure, manage, and transparently report emission data throughout their sustainability transition.'}</p>
+          <div className={styles.stat}>{lang === 'vi' ? '20+ năm kinh nghiệm trong lĩnh vực carbon' : '20+ years of experience in carbon'}</div>
         </div>
         <div className={`${styles.card} ${styles.light}`} data-aos="fade-up" data-aos-duration="600" data-aos-delay="200">
           <span className={styles.watermark}>02</span>
@@ -25,9 +25,9 @@ export default function VisionMission() {
           </div>
           <h3>{lang === 'vi' ? 'Sứ mệnh' : 'Mission'}</h3>
           <p>{lang === 'vi'
-            ? 'Chuẩn hóa quy trình kiểm kê khí nhà kính, chấm điểm ESG và tư vấn Net Zero cho doanh nghiệp Việt Nam — giúp biến nghĩa vụ pháp lý thành lợi thế cạnh tranh bền vững.'
-            : 'Standardize GHG inventory processes, ESG scoring, and Net Zero consulting for Vietnamese enterprises — turning legal obligations into sustainable competitive advantages.'}</p>
-          <div className={styles.stat}>{lang === 'vi' ? '150+ doanh nghiệp được hỗ trợ' : '150+ enterprises supported'}</div>
+            ? 'Chuẩn hóa quy trình kiểm kê khí nhà kính và báo cáo ESG, giúp doanh nghiệp tuân thủ quy định, nâng cao năng lực quản trị và sẵn sàng cho các yêu cầu của thị trường quốc tế.'
+            : 'Standardize GHG inventory and ESG reporting processes, helping enterprises comply with regulations, strengthen governance, and prepare for international market requirements.'}</p>
+          <div className={styles.stat}>{lang === 'vi' ? 'Tuân thủ Nghị định 06/2022/NĐ-CP & ISO 14064' : 'Compliant with Decree 06/2022 & ISO 14064'}</div>
         </div>
       </div>
     </section>

@@ -11,42 +11,44 @@ export default function AboutSection() {
           <p className="section-tag">{lang === 'vi' ? 'Về ESGreen' : 'About ESGreen'}</p>
           <h2 className="section-title">
             {lang === 'vi' ? (
-              <><span style={{ whiteSpace: 'nowrap' }}>Sinh ra từ nhu cầu cấp thiết,</span><br/>lớn lên bằng chiến lược</>
+              <>Vì sao ESGreen ra đời?</>
             ) : (
-              <>Born from urgent need,<br/>growing with strategy</>
+              <>Why was ESGreen founded?</>
             )}
           </h2>
           <div className={styles.body}>
             {lang === 'vi' ? (
               <>
                 <p>
-                  Khi Nghị định 06/2022/NĐ-CP chính thức yêu cầu hàng trăm doanh nghiệp Việt Nam
-                  kiểm kê khí nhà kính, đa phần vẫn loay hoay với file Excel thủ công —
-                  thiếu chuẩn, thiếu dữ liệu, thiếu chuyên gia.
+                  Trong bối cảnh các yêu cầu về kiểm kê khí nhà kính và báo cáo ESG ngày càng rõ ràng,
+                  đặc biệt theo Nghị định 06/2022/NĐ-CP, nhiều doanh nghiệp tại Việt Nam vẫn gặp khó khăn
+                  trong việc triển khai do thiếu công cụ phù hợp và quy trình chuẩn hóa.
                 </p>
                 <p>
-                  ESGreen ra đời tại giao điểm giữa <strong>kinh nghiệm thực chiến hàng đầu về carbon</strong> (đội ngũ sáng lập từ VNEEC — đơn vị dẫn đầu CDM tại Việt Nam)
-                  và <strong>năng lực công nghệ mạnh mẽ</strong>.
+                  ESGreen được thành lập nhằm giải quyết khoảng trống này, bằng cách xây dựng các nền tảng
+                  công nghệ hỗ trợ doanh nghiệp thực hiện kiểm kê khí nhà kính và quản trị ESG theo hướng
+                  đơn giản, rõ ràng và phù hợp với điều kiện thực tế tại Việt Nam.
                 </p>
-                <p>
-                  Không chỉ giúp doanh nghiệp tuân thủ pháp luật, ESGreen hướng tới trở thành <strong>nền tảng quản trị ESG chuẩn quốc tế,
-                  phục vụ hàng nghìn doanh nghiệp Việt trên hành trình phát triển bền vững.</strong>
+                <p className={styles.closing}>
+                  Từ yêu cầu tuân thủ đến năng lực cạnh tranh — ESGreen hướng tới việc biến ESG
+                  thành lợi thế dài hạn cho doanh nghiệp.
                 </p>
               </>
             ) : (
               <>
                 <p>
-                  When Decree 06/2022/ND-CP officially required hundreds of Vietnamese enterprises
-                  to inventory greenhouse gases, most were struggling with manual Excel files —
-                  lacking standards, data, and expertise.
+                  As requirements for GHG inventory and ESG reporting become increasingly clear,
+                  especially under Decree 06/2022/NĐ-CP, many Vietnamese enterprises still face challenges
+                  in implementation due to a lack of suitable tools and standardized processes.
                 </p>
                 <p>
-                  ESGreen was born at the intersection of <strong>leading carbon expertise</strong> (founding team from VNEEC — Vietnam&apos;s CDM market leader)
-                  and <strong>powerful technology capabilities</strong>.
+                  ESGreen was founded to address this gap, by building technology platforms
+                  that support enterprises in conducting GHG inventory and ESG management —
+                  simple, transparent, and adapted to real-world conditions in Vietnam.
                 </p>
-                <p>
-                  Beyond compliance, ESGreen aims to become <strong>the international-standard ESG management platform,
-                  serving thousands of Vietnamese enterprises on their sustainability journey.</strong>
+                <p className={styles.closing}>
+                  From compliance requirements to competitive advantage — ESGreen aims to turn ESG
+                  into a long-term asset for enterprises.
                 </p>
               </>
             )}

@@ -64,41 +64,23 @@ function RatingVisual({ lang }: { lang: string }) {
 }
 
 function NetZeroVisual({ lang }: { lang: string }) {
-  const ref = useRef<HTMLDivElement>(null)
-  const [animated, setAnimated] = useState(false)
-  const [counts, setCounts] = useState({ co2: 0, projects: 0 })
-  useEffect(() => {
-    if (!ref.current) return
-    const obs = new IntersectionObserver(([e]) => {
-      if (e.isIntersecting && !animated) {
-        setAnimated(true)
-        const dur = 1500; const start = performance.now()
-        const anim = (now: number) => {
-          const p = Math.min((now - start) / dur, 1)
-          setCounts({ co2: Math.floor(p * 10000), projects: Math.floor(p * 50) })
-          if (p < 1) requestAnimationFrame(anim)
-        }
-        requestAnimationFrame(anim); obs.unobserve(e.target)
-      }
-    }, { threshold: 0.3 })
-    obs.observe(ref.current); return () => obs.disconnect()
-  }, [animated])
-
   return (
-    <div className={styles.nzGrid} ref={ref}>
+    <div className={styles.nzGrid}>
       <div className={`${styles.nzImg} ${styles.nzTall}`} style={{overflow:'hidden'}}>
         <img src="/images/experts-solar.jpeg" alt="Green energy consulting experts" style={{width:'100%',height:'100%',objectFit:'cover',borderRadius:16}} />
       </div>
-      <div className={styles.nzStat} style={{background:'var(--brand)'}}>
-        <div className={styles.nzVal} style={{color:'var(--white)'}}>{counts.co2.toLocaleString()}</div>
-        <div className={styles.nzLabel} style={{color:'rgba(255,255,255,0.8)'}}>{lang === 'vi' ? 'Tấn CO₂ cắt giảm' : 'Tons CO₂ Reduced'}</div>
+      <div className={styles.nzStat} style={{background:'var(--forest)'}}>
+        <div className={styles.nzTag}>{lang === 'vi' ? 'CAM KẾT CỦA CHÚNG TÔI' : 'OUR COMMITMENT'}</div>
+        <div className={styles.nzVal} style={{color:'var(--white)', fontSize: 18}}>{lang === 'vi' ? 'Không có lộ trình chung cho mọi doanh nghiệp.' : 'No one-size-fits-all roadmap.'}</div>
+        <div className={styles.nzLabel} style={{color:'rgba(255,255,255,0.7)', fontStyle:'italic'}}>{lang === 'vi' ? 'Chiến lược của bạn bắt đầu từ dữ liệu thực — không phải template.' : 'Your strategy starts from real data — not templates.'}</div>
       </div>
       <div className={styles.nzImg} style={{overflow:'hidden'}}>
         <img src="/images/hand-stylus.jpeg" alt="Carbon data analysis on tablet" style={{width:'100%',height:'100%',objectFit:'cover',borderRadius:16}} />
       </div>
-      <div className={styles.nzStat} style={{background:'var(--forest)'}}>
-        <div className={styles.nzVal} style={{color:'var(--brand)'}}>{counts.projects}+</div>
-        <div className={styles.nzLabel} style={{color:'rgba(255,255,255,0.6)'}}>{lang === 'vi' ? 'Dự án Net Zero' : 'Net Zero Projects'}</div>
+      <div className={styles.nzStat} style={{background:'var(--brand)'}}>
+        <div className={styles.nzTag} style={{color:'rgba(0,0,0,0.5)'}}>{lang === 'vi' ? 'TẦM NHÌN DÀI HẠN' : 'LONG-TERM VISION'}</div>
+        <div className={styles.nzVal} style={{color:'var(--forest)', fontSize: 18}}>{lang === 'vi' ? <span>Tuân thủ hôm nay.<br/>Dẫn đầu ngày mai.</span> : <span>Comply today.<br/>Lead tomorrow.</span>}</div>
+        <div className={styles.nzLabel} style={{color:'rgba(0,0,0,0.6)', fontStyle:'italic', whiteSpace:'nowrap'}}>{lang === 'vi' ? 'Net Zero là lợi thế cạnh tranh của thập kỷ tới.' : 'Net Zero is the competitive edge of the next decade.'}</div>
       </div>
     </div>
   )
@@ -116,7 +98,7 @@ const servicesVi = [
       { bold: 'Xuất báo cáo đúng chuẩn', detail: 'định dạng NĐ 06/2022 & ISO 14064' },
     ],
     btn: { text: 'Liên hệ báo giá →', href: '#contact' },
-    btn2: { text: 'Download Brochure', href: '#' },
+    btn2: { text: 'Xem chi tiết →', href: '/giai-phap/kiem-ke-khi-nha-kinh' },
     visual: 'dashboard',
   },
   {
@@ -128,7 +110,8 @@ const servicesVi = [
       { bold: '100+ chỉ số ESG', detail: 'phân tích theo E-S-G riêng biệt' },
       { bold: 'AI-powered scoring', detail: 'xử lý dữ liệu & phát hiện rủi ro tự động' },
     ],
-    btn: { text: 'Trải nghiệm Demo', href: '#contact' },
+    btn: { text: 'Đăng ký demo', href: '#contact' },
+    btn2: { text: 'Xem chi tiết →', href: '/giai-phap/cham-diem-esg' },
     visual: 'rating',
   },
   {
@@ -142,6 +125,7 @@ const servicesVi = [
       { bold: 'Carbon Offset Advisory', detail: 'tư vấn mua tín chỉ carbon, phương án bù đắp' },
     ],
     btn: { text: 'Tư vấn lộ trình →', href: '#contact' },
+    btn2: { text: 'Xem chi tiết →', href: '/giai-phap/tu-van-net-zero' },
     visual: 'netzero',
   },
 ]
@@ -158,7 +142,7 @@ const servicesEn = [
       { bold: 'Compliant Report Export', detail: 'Decree 06/2022 & ISO 14064 format' },
     ],
     btn: { text: 'Contact for Pricing →', href: '#contact' },
-    btn2: { text: 'Download Brochure', href: '#' },
+    btn2: { text: 'Learn More →', href: '/giai-phap/kiem-ke-khi-nha-kinh' },
     visual: 'dashboard',
   },
   {
@@ -171,6 +155,7 @@ const servicesEn = [
       { bold: 'AI-powered Scoring', detail: 'automated data processing & risk detection' },
     ],
     btn: { text: 'Try Demo', href: '#contact' },
+    btn2: { text: 'Learn More →', href: '/giai-phap/cham-diem-esg' },
     visual: 'rating',
   },
   {
@@ -184,6 +169,7 @@ const servicesEn = [
       { bold: 'Carbon Offset Advisory', detail: 'carbon credit purchase consulting & offset plans' },
     ],
     btn: { text: 'Consult Roadmap →', href: '#contact' },
+    btn2: { text: 'Learn More →', href: '/giai-phap/tu-van-net-zero' },
     visual: 'netzero',
   },
 ]

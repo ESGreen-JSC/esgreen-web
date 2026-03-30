@@ -8,8 +8,6 @@ export default function HeroSection() {
   const [typedText, setTypedText] = useState('')
   const [showCursor, setShowCursor] = useState(true)
   const statsRef = useRef<HTMLDivElement>(null)
-  const [countersAnimated, setCountersAnimated] = useState(false)
-  const [counts, setCounts] = useState({ projects: 0, credits: 0 })
 
   // Typed effect
   useEffect(() => {
@@ -53,29 +51,6 @@ export default function HeroSection() {
     return () => clearInterval(interval)
   }, [])
 
-  // Counter animation
-  useEffect(() => {
-    if (!statsRef.current) return
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting && !countersAnimated) {
-        setCountersAnimated(true)
-        const duration = 1500
-        const start = performance.now()
-        const animate = (now: number) => {
-          const progress = Math.min((now - start) / duration, 1)
-          setCounts({
-            projects: Math.floor(progress * 150),
-            credits: Math.floor(progress * 13),
-          })
-          if (progress < 1) requestAnimationFrame(animate)
-        }
-        requestAnimationFrame(animate)
-        observer.unobserve(entry.target)
-      }
-    }, { threshold: 0.5 })
-    observer.observe(statsRef.current)
-    return () => observer.disconnect()
-  }, [countersAnimated])
 
   return (
     <section id="hero" className={styles.hero}>
@@ -84,7 +59,7 @@ export default function HeroSection() {
       <canvas id="particles-canvas" className={styles.particles} />
       <div className={`container ${styles.content}`}>
         <p className={styles.eyebrow}>
-          {lang === 'vi' ? 'NỀN TẢNG ESG CÔNG NGHỆ SỐ' : 'DIGITAL ESG PLATFORM'}
+          {lang === 'vi' ? 'PHẦN MỀM KIỂM KÊ KHÍ NHÀ KÍNH & ESG' : 'GHG INVENTORY & ESG SOFTWARE'}
         </p>
         <h1 className={styles.h1}>
           {lang === 'vi' ? 'Chuẩn hóa kiểm kê,' : 'Standardize Inventory,'}
@@ -95,38 +70,84 @@ export default function HeroSection() {
         </div>
         <p className={styles.sub}>
           {lang === 'vi'
-            ? 'ESGreen giúp doanh nghiệp kiểm kê khí nhà kính chính xác, chấm điểm ESG tự động và xây dựng lộ trình Net Zero — tất cả trên một nền tảng số duy nhất.'
-            : 'ESGreen helps enterprises accurately inventory greenhouse gases, automate ESG scoring, and build Net Zero roadmaps — all on a single digital platform.'}
+            ? 'ESGreen giúp doanh nghiệp kiểm kê khí nhà kính, đo lường phát thải CO2 và xây dựng báo cáo ESG theo Nghị định 06/2022/NĐ-CP.'
+            : 'ESGreen helps enterprises inventory greenhouse gases, measure CO2 emissions, and build ESG reports per Decree 06/2022/NĐ-CP.'}
+        </p>
+        <p className={styles.hook}>
+          {lang === 'vi'
+            ? 'Phù hợp cho doanh nghiệp thuộc danh sách kiểm kê bắt buộc và các doanh nghiệp tham gia chuỗi cung ứng toàn cầu (CBAM, ESG).'
+            : 'Suitable for enterprises on the mandatory inventory list and businesses in global supply chains (CBAM, ESG).'}
         </p>
         <div className={styles.btns}>
           <a href="#contact" className="btn-primary btn-shimmer btn-pulse" style={{ padding: '16px 36px', fontSize: '16px' }}>
-            {lang === 'vi' ? 'Liên hệ' : 'Contact'}
+            {lang === 'vi' ? 'Đăng ký demo' : 'Request Demo'}
           </a>
-          <a href="#services" className="btn-ghost">
-            {lang === 'vi' ? 'Xem demo →' : 'View Demo →'}
+          <a href="#contact" className="btn-ghost">
+            {lang === 'vi' ? 'Liên hệ tư vấn' : 'Contact Us'}
           </a>
         </div>
+        <p className={styles.trustLine}>
+          {lang === 'vi'
+            ? 'Không yêu cầu kỹ thuật — triển khai trong 2–4 tuần'
+            : 'No technical requirements — deploy in 2–4 weeks'}
+        </p>
 
         <div className={styles.trustBar}>
           <span className={styles.trustLabel}>{lang === 'vi' ? 'Đối tác chiến lược:' : 'Strategic Partners:'}</span>
           <div className={styles.trustLogos}>
-            <a href="https://eec.vn/" target="_blank" rel="noopener noreferrer"><img src="/logo/logo_VNEEC.png" alt="VNEEC" /></a>
-            <a href="https://greencic.vn/" target="_blank" rel="noopener noreferrer"><img src="/logo/Logo_GreenCIC.png" alt="GreenCIC" /></a>
+            <div className={styles.partnerItem}>
+              <a href="https://eec.vn/" target="_blank" rel="noopener noreferrer"><img src="/logo/logo_VNEEC.png" alt="VNEEC" /></a>
+              <span className={styles.partnerDesc}>{lang === 'vi' ? 'Dẫn đầu thị trường CDM tại Việt Nam' : 'Leading CDM market in Vietnam'}</span>
+            </div>
+            <div className={styles.partnerItem}>
+              <a href="https://greencic.vn/" target="_blank" rel="noopener noreferrer"><img src="/logo/Logo_GreenCIC.png" alt="GreenCIC" /></a>
+              <span className={styles.partnerDesc}>{lang === 'vi' ? 'Tổ chức tư vấn phát triển xanh hàng đầu' : 'Leading green development consultancy'}</span>
+            </div>
           </div>
         </div>
 
         <div className={styles.stats} ref={statsRef}>
-          <div>
-            <div className={styles.statVal}>{counts.projects}+</div>
-            <div className={styles.statLabel}>{lang === 'vi' ? 'Dự án CDM đã thực hiện' : 'CDM Projects Completed'}</div>
+          <div className={styles.credItem}>
+            <div className={styles.credIcon}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+            <div>
+              <div className={styles.statVal}>{lang === 'vi' ? '20+' : '20+'}</div>
+              <div className={styles.statLabel}>
+                {lang === 'vi' ? 'năm kinh nghiệm trong lĩnh vực carbon & ESG' : 'years of experience in carbon & ESG'}
+              </div>
+            </div>
           </div>
-          <div>
-            <div className={styles.statVal}>{counts.credits}M</div>
-            <div className={styles.statLabel}>{lang === 'vi' ? 'Tín chỉ carbon phát hành' : 'Carbon Credits Issued'}</div>
+          <div className={styles.credItem}>
+            <div className={styles.credIcon}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <div>
+              <div className={styles.statVal}>GHG Protocol</div>
+              <div className={styles.statLabel}>& ISO 14064</div>
+            </div>
           </div>
-          <div>
-            <div className={styles.statVal}>18–29</div>
-            <div className={styles.statLabel}>{lang === 'vi' ? 'Năm kinh nghiệm chuyên gia' : 'Years of Expert Experience'}</div>
+          <div className={styles.credItem}>
+            <div className={styles.credIcon}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+              </svg>
+            </div>
+            <div>
+              <div className={styles.statVal}>{lang === 'vi' ? '2' : '2'}</div>
+              <div className={styles.statLabel}>
+                {lang === 'vi' ? 'nền tảng chuyên biệt: kiểm kê KNK & chấm điểm ESG' : 'specialized platforms: GHG Inventory & ESG Scoring'}
+              </div>
+              <div className={styles.credCaption}>
+                {lang === 'vi'
+                  ? 'Sẽ được tích hợp thành một nền tảng thống nhất trong roadmap sản phẩm'
+                  : 'Will be integrated into a unified platform in the product roadmap'}
+              </div>
+            </div>
           </div>
         </div>
       </div>

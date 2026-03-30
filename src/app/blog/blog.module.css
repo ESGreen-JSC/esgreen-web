@@ -6,11 +6,16 @@
 .hero h1 { font-family: var(--font-display); font-weight: 800; font-size: 40px; color: var(--forest); margin-bottom: 12px; }
 .subtitle { max-width: 640px; margin: 0 auto 28px; font-size: 15px; color: var(--text-muted); line-height: 1.6; }
 
-/* Tabs */
+/* Tabs / Section nav */
 .tabs { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
-.tab { padding: 8px 20px; border: 1px solid #ddd; border-radius: 100px; background: var(--white); font-size: 13px; color: var(--text-body); cursor: pointer; transition: all 0.25s; }
+.tab { padding: 8px 20px; border: 1px solid #ddd; border-radius: 100px; background: var(--white); font-size: 13px; color: var(--text-body); cursor: pointer; transition: all 0.25s; text-decoration: none; display: inline-block; }
 .tab:hover { border-color: var(--brand); color: var(--brand); }
-.tabActive { background: var(--brand); color: var(--white); border-color: var(--brand); }
+.tabActive { background: var(--brand); color: var(--white) !important; border-color: var(--brand); }
+
+/* Category sections */
+.categorySection { margin-bottom: 52px; }
+.categorySection:last-child { margin-bottom: 0; }
+.emptySection { color: rgba(0,0,0,0.4); font-size: 14px; font-style: italic; padding: 20px 0 8px; }
 
 /* Main layout */
 .main { display: grid; grid-template-columns: 1fr 340px; gap: 40px; padding: 40px 0 80px; align-items: start; }
@@ -70,6 +75,12 @@
 .newsletter p { font-size: 13px; color: var(--text-muted); line-height: 1.5; margin-bottom: 12px; }
 .nlBtn { width: 100%; padding: 10px; margin-top: 8px; background: var(--brand); color: var(--white); border: none; border-radius: 10px; font-weight: 700; font-size: 14px; cursor: pointer; transition: background 0.25s; }
 .nlBtn:hover { background: var(--brand-dark, #52a033); }
+
+/* Pagination */
+.pagination { display: flex; gap: 8px; align-items: center; margin-top: 16px; }
+.pageBtn { width: 36px; height: 36px; border-radius: 8px; border: 1px solid rgba(45,106,79,0.25); background: var(--white); color: var(--forest); font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+.pageBtn:hover { border-color: var(--brand); color: var(--brand); }
+.pageBtnActive { background: var(--brand); color: #fff !important; border-color: var(--brand); }
 
 /* Responsive */
 @media (max-width: 900px) {

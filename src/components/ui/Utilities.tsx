@@ -56,7 +56,7 @@ export function StickyCtaBar() {
 
 export function FloatButton() {
   return (
-    <a href="tel:0865493186" title="Gọi tư vấn: 0865 493 186" aria-label="Gọi tư vấn: 0865 493 186"
+    <a href="tel:0856357968" title="Gọi tư vấn: 0856 357 968" aria-label="Gọi tư vấn: 0856 357 968"
       style={{
         position: 'fixed', bottom: 24, right: 24, zIndex: 45,
         width: 56, height: 56, borderRadius: '50%', background: 'var(--brand)',

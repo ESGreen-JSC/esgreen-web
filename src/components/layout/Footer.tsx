@@ -40,11 +40,11 @@ export default function Footer() {
         <div className={styles.col}>
           <h4>{lang === 'vi' ? 'Liên hệ' : 'Contact'}</h4>
           <a href="mailto:contact@esgreen.vn">contact@esgreen.vn</a>
-          <a href="tel:0865493186">0865 493 186</a>
+          <a href="tel:0856357968">0856 357 968</a>
           <span>{lang === 'vi' ? 'Tầng 8, toà nhà Diamond Flower' : '8th Floor, Diamond Flower Tower'}</span>
           <span>{lang === 'vi' ? '48 Lê Văn Lương, Phường Yên Hòa' : '48 Le Van Luong, Yen Hoa Ward'}</span>
           <span>{lang === 'vi' ? 'Thành phố Hà Nội, Việt Nam' : 'Hanoi, Vietnam'}</span>
-          <span>{lang === 'vi' ? 'T2–T6: 8:30 – 17:30' : 'Mon–Fri: 8:30 – 17:30'}</span>
+          <span>{lang === 'vi' ? 'T2–T6: 9:00 – 18:00' : 'Mon–Fri: 9:00 – 18:00'}</span>
         </div>
 
         <div className={styles.newsletter}>
@@ -60,7 +60,7 @@ export default function Footer() {
       </div>
 
       <div className={`container ${styles.footerBottom}`}>
-        <span>© 2026 ESGreen JSC. All rights reserved.</span>
+        <span>© 2026 ESGreen. All rights reserved.</span>
         <div>
           <a href="/terms/">{lang === 'vi' ? 'Điều khoản sử dụng' : 'Terms of Use'}</a>
           <a href="/privacy/">{lang === 'vi' ? 'Chính sách bảo mật' : 'Privacy Policy'}</a>

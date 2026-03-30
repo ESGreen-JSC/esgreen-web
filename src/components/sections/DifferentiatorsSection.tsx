@@ -61,7 +61,7 @@ export default function DifferentiatorsSection() {
         </div>
         <div className={styles.cta} data-aos="fade-up" data-aos-delay="200">
           <p>{lang === 'vi'
-            ? 'Hơn 150 doanh nghiệp đã tin tưởng ESGreen trong hành trình chuyển đổi xanh. Bắt đầu ngay hôm nay — đội ngũ chuyên gia 18–29 năm kinh nghiệm sẵn sàng đồng hành cùng bạn.'
+            ? 'Bắt đầu triển khai ESG cùng ESGreen — nền tảng được xây dựng theo tiêu chuẩn quốc tế, kết hợp công nghệ và chuyên môn để đồng hành cùng doanh nghiệp.'
             : 'Over 150 enterprises trust ESGreen on their green transition journey. Start today — our expert team with 18–29 years of experience is ready to partner with you.'}
           </p>
           <a href="#contact" className="btn-primary btn-shimmer">{lang === 'vi' ? 'Bắt đầu ngay' : 'Get Started'}</a>

@@ -51,7 +51,7 @@ function PrivacyContent() {
           <p>{vi ? 'Chúng tôi có thể cập nhật Chính sách bảo mật này theo thời gian. Mọi thay đổi sẽ được đăng tải trên trang này kèm ngày cập nhật. Chúng tôi khuyến khích bạn kiểm tra định kỳ để nắm được các thay đổi.' : 'We may update this Privacy Policy from time to time. Changes will be posted on this page with the update date. We encourage you to review periodically to stay informed of changes.'}</p>
 
           <h2>{vi ? '9. Liên hệ' : '9. Contact'}</h2>
-          <p className={styles.contact}>{vi ? `Mọi thắc mắc về Chính sách bảo mật, vui lòng liên hệ:\nCông ty cổ phần ESGreen\nĐịa chỉ: Tầng 8, Diamond Flower, 48 Lê Văn Lương, Hà Nội\nEmail: contact@esgreen.vn | Điện thoại: 0865 493 186` : `For any questions regarding this Privacy Policy, please contact:\nESGreen JSC\nAddress: 8th Floor, Diamond Flower, 48 Le Van Luong, Hanoi\nEmail: contact@esgreen.vn | Phone: 0865 493 186`}</p>
+          <p className={styles.contact}>{vi ? `Mọi thắc mắc về Chính sách bảo mật, vui lòng liên hệ:\nCông ty cổ phần ESGreen\nĐịa chỉ: Tầng 8, Diamond Flower, 48 Lê Văn Lương, Hà Nội\nEmail: contact@esgreen.vn | Điện thoại: 0856 357 968` : `For any questions regarding this Privacy Policy, please contact:\nESGreen JSC\nAddress: 8th Floor, Diamond Flower, 48 Le Van Luong, Hanoi\nEmail: contact@esgreen.vn | Phone: 0856 357 968`}</p>
         </div>
       </div>
     </div>

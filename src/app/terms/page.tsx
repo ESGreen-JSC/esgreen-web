@@ -42,7 +42,7 @@ function TermsContent() {
           <p>{vi ? 'ESGreen có quyền cập nhật các điều khoản này bất kỳ lúc nào. Phiên bản mới sẽ có hiệu lực ngay khi đăng tải trên Website. Việc bạn tiếp tục sử dụng Website sau khi thay đổi đồng nghĩa với việc chấp nhận các điều khoản mới.' : 'ESGreen reserves the right to update these terms at any time. Updated versions take effect immediately upon posting on the Website. Continued use of the Website after changes constitutes acceptance of the new terms.'}</p>
 
           <h2>{vi ? '10. Liên hệ' : '10. Contact'}</h2>
-          <p className={styles.contact}>{vi ? `Mọi thắc mắc về Điều khoản sử dụng, vui lòng liên hệ:\nCông ty cổ phần ESGreen\nĐịa chỉ: Tầng 8, Diamond Flower, 48 Lê Văn Lương, Hà Nội\nEmail: contact@esgreen.vn | Điện thoại: 0865 493 186` : `For any questions regarding these Terms of Service, please contact:\nESGreen JSC\nAddress: 8th Floor, Diamond Flower, 48 Le Van Luong, Hanoi\nEmail: contact@esgreen.vn | Phone: 0865 493 186`}</p>
+          <p className={styles.contact}>{vi ? `Mọi thắc mắc về Điều khoản sử dụng, vui lòng liên hệ:\nCông ty cổ phần ESGreen\nĐịa chỉ: Tầng 8, Diamond Flower, 48 Lê Văn Lương, Hà Nội\nEmail: contact@esgreen.vn | Điện thoại: 0856 357 968` : `For any questions regarding these Terms of Service, please contact:\nESGreen JSC\nAddress: 8th Floor, Diamond Flower, 48 Le Van Luong, Hanoi\nEmail: contact@esgreen.vn | Phone: 0856 357 968`}</p>
         </div>
       </div>
     </div>

@@ -1,0 +1,951 @@
+[
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              },
+              {
+                "flag": "min",
+                "constraint": 5
+              },
+              {
+                "flag": "max",
+                "constraint": 100
+              }
+            ]
+          }
+        ],
+        "name": "title",
+        "type": "string",
+        "title": "Tiêu đề"
+      },
+      {
+        "options": {
+          "source": "title",
+          "maxLength": 96
+        },
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "custom"
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "slug",
+        "type": "slug",
+        "title": "Đường dẫn (URL)"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "thumbnail",
+        "type": "image",
+        "title": "Ảnh đại diện"
+      },
+      {
+        "description": "Đường dẫn ảnh local (dùng khi không upload lên Sanity)",
+        "name": "thumbnailUrl",
+        "type": "string",
+        "title": "Ảnh đại diện (URL local)"
+      },
+      {
+        "rows": 3,
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "max",
+                "constraint": 200
+              }
+            ]
+          }
+        ],
+        "name": "excerpt",
+        "type": "text",
+        "title": "Tóm tắt"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "of": [
+          {
+            "lists": [
+              {
+                "value": "bullet",
+                "title": "Bulleted list"
+              },
+              {
+                "value": "number",
+                "title": "Numbered list"
+              }
+            ],
+            "marks": {
+              "annotations": [
+                {
+                  "fields": [
+                    {
+                      "name": "href",
+                      "type": "string",
+                      "title": "URL"
+                    }
+                  ],
+                  "name": "link",
+                  "type": "object"
+                }
+              ],
+              "decorators": [
+                {
+                  "value": "strong",
+                  "title": "Strong"
+                },
+                {
+                  "value": "em",
+                  "title": "Italic"
+                },
+                {
+                  "value": "code",
+                  "title": "Code"
+                },
+                {
+                  "value": "underline",
+                  "title": "Underline"
+                },
+                {
+                  "value": "strike-through",
+                  "title": "Strike"
+                }
+              ]
+            },
+            "of": [],
+            "styles": [
+              {
+                "value": "normal",
+                "title": "Normal"
+              },
+              {
+                "value": "h1",
+                "title": "Heading 1"
+              },
+              {
+                "value": "h2",
+                "title": "Heading 2"
+              },
+              {
+                "value": "h3",
+                "title": "Heading 3"
+              },
+              {
+                "value": "h4",
+                "title": "Heading 4"
+              },
+              {
+                "value": "h5",
+                "title": "Heading 5"
+              },
+              {
+                "value": "h6",
+                "title": "Heading 6"
+              },
+              {
+                "value": "blockquote",
+                "title": "Quote"
+              }
+            ],
+            "type": "block"
+          },
+          {
+            "options": {
+              "hotspot": true
+            },
+            "type": "image"
+          },
+          {
+            "fields": [
+              {
+                "name": "url",
+                "type": "string",
+                "title": "URL ảnh"
+              },
+              {
+                "name": "alt",
+                "type": "string",
+                "title": "Alt text"
+              },
+              {
+                "name": "caption",
+                "type": "string"
+              }
+            ],
+            "type": "object",
+            "name": "urlImage",
+            "title": "Ảnh URL"
+          }
+        ],
+        "name": "body",
+        "type": "array",
+        "title": "Nội dung"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "to": [
+          {
+            "type": "category"
+          }
+        ],
+        "name": "category",
+        "type": "reference",
+        "title": "Danh mục"
+      },
+      {
+        "options": {
+          "layout": "tags"
+        },
+        "of": [
+          {
+            "type": "string"
+          }
+        ],
+        "name": "tags",
+        "type": "array"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "publishedAt",
+        "type": "datetime",
+        "title": "Ngày đăng"
+      },
+      {
+        "name": "author",
+        "type": "string",
+        "title": "Tác giả"
+      },
+      {
+        "options": {
+          "list": [
+            {
+              "title": "Tiếng Việt",
+              "value": "vi"
+            },
+            {
+              "title": "English",
+              "value": "en"
+            }
+          ],
+          "layout": "radio"
+        },
+        "initialValue": "vi",
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "valid",
+                "constraint": [
+                  "vi",
+                  "en"
+                ]
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "locale",
+        "type": "string",
+        "title": "Ngôn ngữ"
+      },
+      {
+        "options": {
+          "list": [
+            {
+              "title": "Bản nháp",
+              "value": "draft"
+            },
+            {
+              "title": "Đã đăng",
+              "value": "published"
+            },
+            {
+              "title": "Lưu trữ",
+              "value": "archived"
+            }
+          ],
+          "layout": "radio"
+        },
+        "initialValue": "draft",
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "valid",
+                "constraint": [
+                  "draft",
+                  "published",
+                  "archived"
+                ]
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "status",
+        "type": "string",
+        "title": "Trạng thái"
+      },
+      {
+        "initialValue": false,
+        "name": "featured",
+        "type": "boolean",
+        "title": "Bài nổi bật"
+      },
+      {
+        "options": {
+          "collapsible": true,
+          "collapsed": true
+        },
+        "fields": [
+          {
+            "validation": [
+              {
+                "level": "error",
+                "rules": [
+                  {
+                    "flag": "max",
+                    "constraint": 60
+                  }
+                ]
+              }
+            ],
+            "name": "metaTitle",
+            "type": "string"
+          },
+          {
+            "rows": 2,
+            "validation": [
+              {
+                "level": "error",
+                "rules": [
+                  {
+                    "flag": "max",
+                    "constraint": 160
+                  }
+                ]
+              }
+            ],
+            "name": "metaDescription",
+            "type": "text"
+          },
+          {
+            "name": "ogImage",
+            "type": "image",
+            "title": "OG Image"
+          }
+        ],
+        "name": "seo",
+        "type": "object",
+        "title": "SEO"
+      }
+    ],
+    "name": "blogPost",
+    "type": "document",
+    "title": "Bài viết"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "title",
+        "type": "string",
+        "title": "Tên danh mục"
+      },
+      {
+        "options": {
+          "source": "title",
+          "maxLength": 96
+        },
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "custom"
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "slug",
+        "type": "slug",
+        "title": "Đường dẫn (URL)"
+      },
+      {
+        "rows": 2,
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "max",
+                "constraint": 200
+              }
+            ]
+          }
+        ],
+        "name": "description",
+        "type": "text",
+        "title": "Mô tả"
+      },
+      {
+        "options": {
+          "list": [
+            {
+              "title": "Tiếng Việt",
+              "value": "vi"
+            },
+            {
+              "title": "English",
+              "value": "en"
+            }
+          ],
+          "layout": "radio"
+        },
+        "initialValue": "vi",
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "valid",
+                "constraint": [
+                  "vi",
+                  "en"
+                ]
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "locale",
+        "type": "string",
+        "title": "Ngôn ngữ"
+      }
+    ],
+    "name": "category",
+    "type": "document",
+    "title": "Danh mục"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              },
+              {
+                "flag": "min",
+                "constraint": 5
+              },
+              {
+                "flag": "max",
+                "constraint": 200
+              }
+            ]
+          }
+        ],
+        "name": "title",
+        "type": "string",
+        "title": "Tên văn bản"
+      },
+      {
+        "options": {
+          "source": "title",
+          "maxLength": 96
+        },
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "custom"
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "slug",
+        "type": "slug",
+        "title": "Đường dẫn (URL)"
+      },
+      {
+        "placeholder": "VD: 06/2022/NĐ-CP",
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "documentNumber",
+        "type": "string",
+        "title": "Số hiệu văn bản"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "issuedDate",
+        "type": "date",
+        "title": "Ngày ban hành"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "issuingAuthority",
+        "type": "string",
+        "title": "Cơ quan ban hành"
+      },
+      {
+        "options": {
+          "list": [
+            {
+              "title": "Nghị định",
+              "value": "decree"
+            },
+            {
+              "title": "Thông tư",
+              "value": "circular"
+            },
+            {
+              "title": "Quyết định",
+              "value": "decision"
+            },
+            {
+              "title": "Hướng dẫn",
+              "value": "guideline"
+            },
+            {
+              "title": "Khác",
+              "value": "other"
+            }
+          ],
+          "layout": "dropdown"
+        },
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "valid",
+                "constraint": [
+                  "decree",
+                  "circular",
+                  "decision",
+                  "guideline",
+                  "other"
+                ]
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "documentType",
+        "type": "string",
+        "title": "Loại văn bản"
+      },
+      {
+        "rows": 3,
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "max",
+                "constraint": 300
+              }
+            ]
+          }
+        ],
+        "name": "excerpt",
+        "type": "text",
+        "title": "Mô tả tóm tắt"
+      },
+      {
+        "options": {
+          "accept": ".pdf"
+        },
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "file",
+        "type": "file",
+        "title": "File văn bản (PDF)"
+      },
+      {
+        "options": {
+          "list": [
+            {
+              "title": "Tiếng Việt",
+              "value": "vi"
+            },
+            {
+              "title": "English",
+              "value": "en"
+            }
+          ],
+          "layout": "radio"
+        },
+        "initialValue": "vi",
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "valid",
+                "constraint": [
+                  "vi",
+                  "en"
+                ]
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "locale",
+        "type": "string",
+        "title": "Ngôn ngữ"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "publishedAt",
+        "type": "datetime",
+        "title": "Ngày đăng lên website"
+      },
+      {
+        "options": {
+          "list": [
+            {
+              "title": "Bản nháp",
+              "value": "draft"
+            },
+            {
+              "title": "Đã đăng",
+              "value": "published"
+            },
+            {
+              "title": "Lưu trữ",
+              "value": "archived"
+            }
+          ],
+          "layout": "radio"
+        },
+        "initialValue": "draft",
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "valid",
+                "constraint": [
+                  "draft",
+                  "published",
+                  "archived"
+                ]
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "status",
+        "type": "string",
+        "title": "Trạng thái"
+      }
+    ],
+    "name": "legalDocument",
+    "type": "document",
+    "title": "Văn bản pháp lý"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "title",
+        "type": "string",
+        "title": "Tên brochure"
+      },
+      {
+        "options": {
+          "list": [
+            {
+              "title": "Phần mềm kiểm kê KNK",
+              "value": "ghg-inventory"
+            },
+            {
+              "title": "Chấm điểm ESG",
+              "value": "esg-rating"
+            },
+            {
+              "title": "Tư vấn Net Zero",
+              "value": "net-zero"
+            }
+          ],
+          "layout": "dropdown"
+        },
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "valid",
+                "constraint": [
+                  "ghg-inventory",
+                  "esg-rating",
+                  "net-zero"
+                ]
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "product",
+        "type": "string",
+        "title": "Sản phẩm"
+      },
+      {
+        "options": {
+          "accept": ".pdf"
+        },
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "file",
+        "type": "file",
+        "title": "File brochure (PDF)"
+      },
+      {
+        "placeholder": "VD: v1.0",
+        "name": "version",
+        "type": "string",
+        "title": "Phiên bản"
+      },
+      {
+        "options": {
+          "list": [
+            {
+              "title": "Tiếng Việt",
+              "value": "vi"
+            },
+            {
+              "title": "English",
+              "value": "en"
+            }
+          ],
+          "layout": "radio"
+        },
+        "initialValue": "vi",
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "valid",
+                "constraint": [
+                  "vi",
+                  "en"
+                ]
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "locale",
+        "type": "string",
+        "title": "Ngôn ngữ"
+      },
+      {
+        "options": {
+          "list": [
+            {
+              "title": "Bản nháp",
+              "value": "draft"
+            },
+            {
+              "title": "Đã đăng",
+              "value": "published"
+            }
+          ],
+          "layout": "radio"
+        },
+        "initialValue": "draft",
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "valid",
+                "constraint": [
+                  "draft",
+                  "published"
+                ]
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "status",
+        "type": "string",
+        "title": "Trạng thái"
+      }
+    ],
+    "name": "productBrochure",
+    "type": "document",
+    "title": "Brochure sản phẩm"
+  }
+]
