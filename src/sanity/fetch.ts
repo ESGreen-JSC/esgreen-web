@@ -12,7 +12,7 @@ import {
 export async function fetchPosts(locale: string): Promise<BlogPost[]> {
   if (!client) return []
   try {
-    return await client.fetch<BlogPost[]>(POSTS_QUERY, { locale })
+    return await client.fetch<BlogPost[]>(POSTS_QUERY, { locale }, { next: { revalidate: 60 } })
   } catch {
     return []
   }
@@ -21,7 +21,7 @@ export async function fetchPosts(locale: string): Promise<BlogPost[]> {
 export async function fetchFeaturedPosts(locale: string): Promise<BlogPost[]> {
   if (!client) return []
   try {
-    return await client.fetch<BlogPost[]>(FEATURED_POSTS_QUERY, { locale })
+    return await client.fetch<BlogPost[]>(FEATURED_POSTS_QUERY, { locale }, { next: { revalidate: 60 } })
   } catch {
     return []
   }
@@ -30,7 +30,7 @@ export async function fetchFeaturedPosts(locale: string): Promise<BlogPost[]> {
 export async function fetchCategories(locale: string): Promise<Category[]> {
   if (!client) return []
   try {
-    return await client.fetch<Category[]>(CATEGORIES_QUERY, { locale })
+    return await client.fetch<Category[]>(CATEGORIES_QUERY, { locale }, { next: { revalidate: 60 } })
   } catch {
     return []
   }
@@ -39,7 +39,7 @@ export async function fetchCategories(locale: string): Promise<Category[]> {
 export async function fetchPostBySlug(slug: string): Promise<BlogPost | null> {
   if (!client) return null
   try {
-    return await client.fetch<BlogPost>(POST_BY_SLUG_QUERY, { slug })
+    return await client.fetch<BlogPost>(POST_BY_SLUG_QUERY, { slug }, { next: { revalidate: 60 } })
   } catch {
     return null
   }
@@ -48,7 +48,7 @@ export async function fetchPostBySlug(slug: string): Promise<BlogPost | null> {
 export async function fetchPostsByCategory(locale: string, categorySlug: string): Promise<BlogPost[]> {
   if (!client) return []
   try {
-    return await client.fetch<BlogPost[]>(POSTS_BY_CATEGORY_QUERY, { locale, categorySlug })
+    return await client.fetch<BlogPost[]>(POSTS_BY_CATEGORY_QUERY, { locale, categorySlug }, { next: { revalidate: 60 } })
   } catch {
     return []
   }
@@ -57,7 +57,7 @@ export async function fetchPostsByCategory(locale: string, categorySlug: string)
 export async function fetchLegalDocs(locale: string): Promise<LegalDocument[]> {
   if (!client) return []
   try {
-    return await client.fetch<LegalDocument[]>(LEGAL_DOCS_QUERY, { locale })
+    return await client.fetch<LegalDocument[]>(LEGAL_DOCS_QUERY, { locale }, { next: { revalidate: 60 } })
   } catch {
     return []
   }

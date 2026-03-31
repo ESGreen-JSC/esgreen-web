@@ -100,7 +100,16 @@ export const blogPost = defineType({
       title: 'Ngày đăng',
       type: 'datetime',
       initialValue: () => new Date().toISOString(),
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) =>
+        Rule.required().custom((value) => {
+          if (!value) return true
+          const entered = new Date(value)
+          const now = new Date()
+          if (entered > now) {
+            return `Ngày đăng không được vượt quá ngày hiện tại (${now.toLocaleDateString('vi-VN')})`
+          }
+          return true
+        }),
     }),
     defineField({
       name: 'author',
