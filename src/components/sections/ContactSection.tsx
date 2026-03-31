@@ -1,8 +1,39 @@
+import { useState } from 'react'
 import styles from './ContactSection.module.css'
 import { useLang } from '@/components/layout/Header'
 
 export default function ContactSection() {
   const { lang } = useLang()
+  const [form, setForm] = useState({ name: '', phone: '', email: '', company: '', message: '' })
+  const [status, setStatus] = useState<'idle' | 'sending' | 'ok' | 'err'>('idle')
+
+  const set = (k: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+    setForm(prev => ({ ...prev, [k]: e.target.value }))
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    setStatus('sending')
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: 'contact',
+          'Họ và tên': form.name,
+          'Số điện thoại': form.phone,
+          'Email': form.email,
+          'Công ty': form.company,
+          'Nội dung': form.message,
+        }),
+      })
+      if (res.ok) {
+        setStatus('ok')
+        setForm({ name: '', phone: '', email: '', company: '', message: '' })
+      } else {
+        setStatus('err')
+      }
+    } catch { setStatus('err') }
+  }
 
   return (
     <section id="contact" className={styles.contact}>
@@ -12,39 +43,57 @@ export default function ContactSection() {
           <p className={styles.sub}>
             {lang === 'vi' ? 'Đội ngũ sẽ phản hồi trong vòng 24 giờ làm việc.' : 'Our team will respond within 24 business hours.'}
           </p>
-          <form onSubmit={e => e.preventDefault()}>
+          {status === 'ok' ? (
+            <div style={{ padding: '40px 0', textAlign: 'center' }}>
+              <p style={{ fontSize: 48, margin: 0 }}>✅</p>
+              <h3 style={{ color: 'var(--forest)', margin: '12px 0 8px' }}>
+                {lang === 'vi' ? 'Gửi thành công!' : 'Submitted!'}
+              </h3>
+              <p style={{ color: '#666' }}>
+                {lang === 'vi' ? 'Đội ngũ ESGreen sẽ phản hồi trong 24 giờ làm việc.' : 'ESGreen team will respond within 24 business hours.'}
+              </p>
+              <button onClick={() => setStatus('idle')} className={styles.submit} style={{ marginTop: 16 }}>
+                {lang === 'vi' ? 'Gửi yêu cầu khác' : 'Send another request'}
+              </button>
+            </div>
+          ) : (
+          <form onSubmit={handleSubmit}>
             <div className={styles.row}>
               <div className={styles.group}>
                 <label>{lang === 'vi' ? 'Họ và tên *' : 'Full Name *'}</label>
-                <input type="text" placeholder={lang === 'vi' ? 'Nguyễn Văn A' : 'John Doe'} required />
+                <input type="text" placeholder={lang === 'vi' ? 'Nguyễn Văn A' : 'John Doe'} required value={form.name} onChange={set('name')} />
               </div>
               <div className={styles.group}>
                 <label>{lang === 'vi' ? 'Số điện thoại *' : 'Phone *'}</label>
-                <input type="tel" placeholder="0912 345 678" required />
+                <input type="tel" placeholder="0912 345 678" required value={form.phone} onChange={set('phone')} />
               </div>
             </div>
             <div className={styles.row}>
               <div className={styles.group}>
                 <label>Email *</label>
-                <input type="email" placeholder="email@company.com" required />
+                <input type="email" placeholder="email@company.com" required value={form.email} onChange={set('email')} />
               </div>
               <div className={styles.group}>
                 <label>{lang === 'vi' ? 'Công ty' : 'Company'}</label>
-                <input type="text" placeholder={lang === 'vi' ? 'Tên công ty' : 'Company name'} />
+                <input type="text" placeholder={lang === 'vi' ? 'Tên công ty' : 'Company name'} value={form.company} onChange={set('company')} />
               </div>
             </div>
             <div className={`${styles.group} ${styles.formGroup_grow}`}>
               <label>{lang === 'vi' ? 'Nội dung *' : 'Message *'}</label>
-              <textarea placeholder={lang === 'vi' ? 'Mô tả nhu cầu tư vấn của bạn...' : 'Describe your consulting needs...'} required />
+              <textarea placeholder={lang === 'vi' ? 'Mô tả nhu cầu tư vấn của bạn...' : 'Describe your consulting needs...'} required value={form.message} onChange={set('message')} />
             </div>
-            <button type="submit" className={`${styles.submit} btn-shimmer`}>
-              {lang === 'vi' ? 'Gửi yêu cầu tư vấn' : 'Submit Consultation Request'}
+            {status === 'err' && <p style={{ color: '#e53e3e', marginBottom: 8 }}>{lang === 'vi' ? 'Có lỗi, vui lòng thử lại.' : 'Error, please try again.'}</p>}
+            <button type="submit" disabled={status === 'sending'} className={`${styles.submit} btn-shimmer`}>
+              {status === 'sending'
+                ? (lang === 'vi' ? 'Đang gửi...' : 'Sending...')
+                : (lang === 'vi' ? 'Gửi yêu cầu tư vấn' : 'Submit Consultation Request')}
             </button>
             <div className={styles.micro}>
               <span>{lang === 'vi' ? '🔒 Bảo mật thông tin' : '🔒 Secure Info'}</span>
               <span>{lang === 'vi' ? '⏱ Phản hồi trong 24h' : '⏱ Response in 24h'}</span>
             </div>
           </form>
+          )}
         </div>
         <div data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
           <div className={styles.map}>

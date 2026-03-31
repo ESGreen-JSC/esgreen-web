@@ -84,6 +84,41 @@ function sanityPostToUI(post: BlogPost, lang: string): UIPost {
 }
 
 /* ── Blog Content ── */
+function BlogNewsletter({ vi }: { vi: boolean }) {
+  const [email, setEmail] = useState('')
+  const [status, setStatus] = useState<'idle' | 'sending' | 'ok' | 'err'>('idle')
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    if (!email) return
+    setStatus('sending')
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ type: 'newsletter', email }),
+      })
+      if (res.ok) { setStatus('ok'); setEmail('') } else setStatus('err')
+    } catch { setStatus('err') }
+  }
+  return (
+    <div className={styles.newsletter}>
+      <h4>{vi ? 'Đăng ký bản tin ESG hàng tuần' : 'Subscribe to Weekly ESG Newsletter'}</h4>
+      <p>{vi ? 'Nhận những phân tích độc quyền và cập nhật chính sách trực tiếp qua email của bạn.' : 'Get exclusive analysis and policy updates delivered directly to your inbox.'}</p>
+      {status === 'ok' ? (
+        <p style={{ color: '#6DC043', fontWeight: 600 }}>{vi ? '✓ Đăng ký thành công!' : '✓ Subscribed!'}</p>
+      ) : (
+        <form onSubmit={handleSubmit}>
+          <input type="email" required placeholder={vi ? 'Email của bạn' : 'Your email'} value={email} onChange={e => setEmail(e.target.value)} />
+          {status === 'err' && <p style={{ color: '#e53e3e', fontSize: 13, margin: '4px 0' }}>{vi ? 'Có lỗi, thử lại.' : 'Error, retry.'}</p>}
+          <button type="submit" disabled={status === 'sending'} className={styles.nlBtn}>
+            {status === 'sending' ? (vi ? 'Đang gửi...' : 'Sending...') : (vi ? 'Đăng ký ngay' : 'Subscribe now')}
+          </button>
+        </form>
+      )}
+    </div>
+  )
+}
+
 function BlogContent() {
   const { lang } = useLang()
   const vi = lang === 'vi'
@@ -321,20 +356,7 @@ function BlogContent() {
             ))}
           </div>
 
-          <div className={styles.newsletter}>
-            <h4>
-              {vi ? 'Đăng ký bản tin ESG hàng tuần' : 'Subscribe to Weekly ESG Newsletter'}
-            </h4>
-            <p>
-              {vi
-                ? 'Nhận những phân tích độc quyền và cập nhật chính sách trực tiếp qua email của bạn.'
-                : 'Get exclusive analysis and policy updates delivered directly to your inbox.'}
-            </p>
-            <input type="email" placeholder={vi ? 'Email của bạn' : 'Your email'} />
-            <button className={styles.nlBtn}>
-              {vi ? 'Đăng ký ngay' : 'Subscribe now'}
-            </button>
-          </div>
+          <BlogNewsletter vi={vi} />
         </aside>
       </div>
     </div>

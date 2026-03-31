@@ -1,8 +1,26 @@
+import { useState } from 'react'
 import styles from './Footer.module.css'
 import { useLang } from '@/components/layout/Header'
 
 export default function Footer() {
   const { lang } = useLang()
+  const [nlEmail, setNlEmail] = useState('')
+  const [nlStatus, setNlStatus] = useState<'idle' | 'sending' | 'ok' | 'err'>('idle')
+
+  async function handleNewsletter(e: React.FormEvent) {
+    e.preventDefault()
+    if (!nlEmail) return
+    setNlStatus('sending')
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ type: 'newsletter', email: nlEmail }),
+      })
+      setNlStatus(res.ok ? 'ok' : 'err')
+      if (res.ok) setNlEmail('')
+    } catch { setNlStatus('err') }
+  }
 
   return (
     <footer className={styles.footer}>
@@ -49,13 +67,15 @@ export default function Footer() {
 
         <div className={styles.newsletter}>
           <h4>{lang === 'vi' ? 'Nhận tin mới' : 'Newsletter'}</h4>
-          <form className={styles.nlForm} onSubmit={e => e.preventDefault()}>
-            <input type="email" placeholder={lang === 'vi' ? 'Email của bạn...' : 'Your email...'} />
-            <button type="submit" aria-label={lang === 'vi' ? 'Đăng ký' : 'Subscribe'}>
+          <form className={styles.nlForm} onSubmit={handleNewsletter}>
+            <input type="email" required placeholder={lang === 'vi' ? 'Email của bạn...' : 'Your email...'} value={nlEmail} onChange={e => setNlEmail(e.target.value)} />
+            <button type="submit" disabled={nlStatus === 'sending'} aria-label={lang === 'vi' ? 'Đăng ký' : 'Subscribe'}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
             </button>
           </form>
-          <p className={styles.nlNote}>{lang === 'vi' ? 'Không spam · Hủy đăng ký bất cứ lúc nào' : 'No spam · Unsubscribe anytime'}</p>
+          {nlStatus === 'ok' && <p className={styles.nlNote} style={{ color: '#6DC043' }}>{lang === 'vi' ? '✓ Đăng ký thành công!' : '✓ Subscribed!'}</p>}
+          {nlStatus === 'err' && <p className={styles.nlNote} style={{ color: '#e53e3e' }}>{lang === 'vi' ? 'Có lỗi, vui lòng thử lại.' : 'Error, please try again.'}</p>}
+          {nlStatus !== 'ok' && nlStatus !== 'err' && <p className={styles.nlNote}>{lang === 'vi' ? 'Không spam · Hủy đăng ký bất cứ lúc nào' : 'No spam · Unsubscribe anytime'}</p>}
         </div>
       </div>
 
