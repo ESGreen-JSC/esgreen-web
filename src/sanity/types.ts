@@ -56,8 +56,8 @@ export interface LegalDocument {
   issuingAuthority: string
   documentType: 'decree' | 'circular' | 'decision' | 'guideline' | 'other'
   excerpt?: string
+  excerptEn?: string
   fileUrl: string
-  locale: 'vi' | 'en'
 }
 
 export interface ProductBrochure {

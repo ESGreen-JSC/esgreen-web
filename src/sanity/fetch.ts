@@ -54,10 +54,10 @@ export async function fetchPostsByCategory(locale: string, categorySlug: string)
   }
 }
 
-export async function fetchLegalDocs(locale: string): Promise<LegalDocument[]> {
+export async function fetchLegalDocs(): Promise<LegalDocument[]> {
   if (!client) return []
   try {
-    return await client.fetch<LegalDocument[]>(LEGAL_DOCS_QUERY, { locale }, { next: { revalidate: 60 } })
+    return await client.fetch<LegalDocument[]>(LEGAL_DOCS_QUERY, {}, { next: { revalidate: 60 } })
   } catch {
     return []
   }

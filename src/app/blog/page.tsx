@@ -140,29 +140,44 @@ function BlogContent() {
     async function loadData() {
       const [sanityPosts, sanityLegal] = await Promise.all([
         fetchPosts(lang),
-        fetchLegalDocs(lang),
+        fetchLegalDocs(),
       ])
       if (cancelled) return
 
       if (sanityPosts.length > 0) {
         setPosts(sanityPosts.map(p => sanityPostToUI(p, lang)))
         setUsingSanity(true)
+      } else if (lang === 'en') {
+        // Fallback: show Vietnamese posts when no English posts exist yet
+        const viPosts = await fetchPosts('vi')
+        if (!cancelled && viPosts.length > 0) {
+          setPosts(viPosts.map(p => sanityPostToUI(p, 'vi')))
+          setUsingSanity(true)
+        }
       }
 
       if (sanityLegal.length > 0) {
-        const typeMap: Record<string, string> = {
+        const typeMapVI: Record<string, string> = {
           decree: 'NGHỊ ĐỊNH',
           circular: 'THÔNG TƯ',
           decision: 'QUYẾT ĐỊNH',
           guideline: 'HƯỚNG DẪN',
           other: 'KHÁC',
         }
+        const typeMapEN: Record<string, string> = {
+          decree: 'DECREE',
+          circular: 'CIRCULAR',
+          decision: 'DECISION',
+          guideline: 'GUIDELINE',
+          other: 'OTHER',
+        }
+        const typeMap = vi ? typeMapVI : typeMapEN
         setLegalDocs(
           sanityLegal.map((d) => ({
             number: d.documentNumber,
             type: typeMap[d.documentType] || d.documentType,
             year: d.issuedDate ? new Date(d.issuedDate).getFullYear().toString() : '',
-            desc: d.excerpt || d.title,
+            desc: (vi ? d.excerpt : (d.excerptEn || d.excerpt)) || d.title,
             issuer: d.issuingAuthority,
             fileUrl: d.fileUrl,
           }))

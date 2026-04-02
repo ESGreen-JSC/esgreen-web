@@ -58,9 +58,17 @@ export const legalDocument = defineType({
     }),
     defineField({
       name: 'excerpt',
-      title: 'Mô tả tóm tắt',
+      title: 'Mô tả tóm tắt (Tiếng Việt)',
       type: 'text',
       rows: 3,
+      validation: (Rule) => Rule.max(300),
+    }),
+    defineField({
+      name: 'excerptEn',
+      title: 'Mô tả tóm tắt (English)',
+      type: 'text',
+      rows: 3,
+      description: 'Bản dịch tiếng Anh của mô tả tóm tắt (tùy chọn)',
       validation: (Rule) => Rule.max(300),
     }),
     defineField({
@@ -105,7 +113,7 @@ export const legalDocument = defineType({
         ],
         layout: 'radio',
       },
-      initialValue: 'draft',
+      initialValue: 'published',
       validation: (Rule) => Rule.required(),
     }),
   ],

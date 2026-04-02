@@ -79,7 +79,7 @@ export const CATEGORIES_QUERY = groq`
 
 // ── Legal Documents ──
 export const LEGAL_DOCS_QUERY = groq`
-  *[_type == "legalDocument" && status == "published" && locale == $locale] | order(issuedDate desc) {
+  *[_type == "legalDocument"] | order(issuedDate desc) {
     _id,
     title,
     slug,
@@ -88,8 +88,8 @@ export const LEGAL_DOCS_QUERY = groq`
     issuingAuthority,
     documentType,
     excerpt,
-    "fileUrl": file.asset->url,
-    locale
+    excerptEn,
+    "fileUrl": file.asset->url
   }
 `
 
