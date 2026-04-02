@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Nunito_Sans } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 
 const nunitoSans = Nunito_Sans({
@@ -50,6 +51,7 @@ export default function RootLayout({
         {children}
         <Analytics />
       </body>
+      <GoogleAnalytics gaId="G-K9ET59RWJ3" />
     </html>
   );
 }
