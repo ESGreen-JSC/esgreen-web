@@ -3,7 +3,11 @@ import { useState, useEffect, createContext, useContext, useRef } from 'react'
 import styles from './Header.module.css'
 
 // Language context
-export const LangContext = createContext<{ lang: string; setLang: (l: string) => void }>({ lang: 'vi', setLang: () => {} })
+export const LangContext = createContext<{
+  lang: string
+  setLang: (l: string) => void
+  translationInfo?: { hasTranslation: boolean }
+}>({ lang: 'vi', setLang: () => {} })
 export function useLang() { return useContext(LangContext) }
 
 const solutionsVi = [
@@ -22,7 +26,7 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [dropdownOpen, setDropdownOpen] = useState(false)
   const dropdownRef = useRef<HTMLLIElement>(null)
-  const { lang, setLang } = useLang()
+  const { lang, setLang, translationInfo } = useLang()
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 72)
@@ -139,12 +143,30 @@ export default function Header() {
         </ul>
 
         <div className={styles.navRight}>
-          <button
-            className={`${styles.lang} ${lang === 'en' ? styles.langActive : ''}`}
-            onClick={() => setLang(lang === 'vi' ? 'en' : 'vi')}
+          {(() => {
+            const isBlogPost = pathname.startsWith('/blog/') && pathname !== '/blog/'
+            const noTranslation = isBlogPost && translationInfo?.hasTranslation === false
+            return (
+              <button
+                className={`${styles.lang} ${lang === 'en' ? styles.langActive : ''} ${noTranslation ? styles.langDisabled : ''}`}
+                onClick={() => { if (!noTranslation) setLang(lang === 'vi' ? 'en' : 'vi') }}
+                disabled={noTranslation}
+                title={noTranslation
+                  ? (lang === 'vi' ? 'Chưa có bản tiếng Anh' : 'No Vietnamese version available')
+                  : undefined}
+              >
+                {lang === 'vi' ? 'VN' : 'EN'}
+              </button>
+            )
+          })()}
+          <a
+            href="https://ecotrack.esgreen.vn/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.ecotrackBtn}
           >
-            {lang === 'vi' ? 'VN' : 'EN'}
-          </button>
+            Hệ thống Ecotrack
+          </a>
           <a href="/#contact" className={`${styles.cta} btn-shimmer`}>
             {lang === 'vi' ? 'Tư vấn ngay' : 'Consult Now'}
           </a>

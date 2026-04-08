@@ -94,6 +94,30 @@
   color: var(--white) !important;
   border-color: var(--brand) !important;
 }
+.langDisabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.ecotrackBtn {
+  font-size: 13px;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 2px solid var(--brand);
+  cursor: pointer;
+  transition: all 0.3s;
+  background: transparent;
+  color: var(--brand);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.ecotrackBtn:hover {
+  background: var(--brand);
+  color: var(--white);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(109, 192, 67, 0.3);
+}
 .cta {
   font-size: 13px;
   font-weight: 700;

@@ -2,8 +2,8 @@ import styles from './TeamSection.module.css'
 import { useLang } from '@/components/layout/Header'
 
 const foundersVi = [
-  { img: '/founders/Dang Thi Hong Hanh.png', name: 'Bà Đặng Thị Hồng Hạnh', bio: '18 năm kinh nghiệm phát triển bền vững. CEO VNEEC — dẫn đầu thị trường CDM/carbon tại Việt Nam với 150+ dự án CDM đã đăng ký thành công.', highlight: 'Eisenhower Fellow 2013' },
-  { img: '/founders/Luc Dinh Vinh.png', name: 'Ông Lục Đình Vinh', bio: '29 năm kinh nghiệm CNTT, chuyên gia kiến trúc hệ thống. Nguyên CTO FSS — xây dựng nền tảng core banking cho nhiều ngân hàng lớn tại Việt Nam.', highlight: 'Kiến trúc sư hệ thống Enterprise' },
+  { img: '/founders/Dang Thi Hong Hanh.png', name: 'Bà Đặng Thị Hồng Hạnh', bio: '30 năm kinh nghiệm trong lĩnh vực Biến đổi khí hậu, phát triển bền vững. CEO VNEEC — dẫn đầu thị trường CDM/carbon tại Việt Nam với 150+ dự án CDM đã đăng ký thành công.', highlight: 'Eisenhower Fellow 2013' },
+  { img: '/founders/Luc Dinh Vinh.png', name: 'Ông Lục Đình Vinh', bio: '29 năm kinh nghiệm CNTT, chuyên gia kiến trúc hệ thống. Nguyên CTO FSS — xây dựng nền tảng core cho nhiều định chế tài chính - ngân hàng lớn tại Việt Nam.', highlight: 'Kiến trúc sư hệ thống Enterprise' },
   { img: '/founders/Dang Luu Dung.png', name: 'Ông Đặng Lưu Dũng', bio: '20+ năm quản trị doanh nghiệp & đầu tư. Nguyên CEO Techcom Capital — quản lý quỹ TCBF quy mô trên 1 tỷ USD.', highlight: 'Chuyên gia Tài chính & Quản trị' },
 ]
 
