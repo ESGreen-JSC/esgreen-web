@@ -120,9 +120,9 @@ const servicesVi = [
     title: 'Tư vấn chiến lược\nnet-zero và phát triển bền vững',
     desc: 'Từ dữ liệu phát thải KNK, chúng tôi xây dựng lộ trình giảm phát thải cụ thể, khả thi, hướng tới mục tiêu của khách hàng.',
     features: [
-      { bold: 'Baseline & Gap Analysis', detail: 'đánh giá hiện trạng, xác định mục tiêu' },
-      { bold: 'Lộ trình giảm phát thải', detail: 'từng mốc 2025 → 2030 → 2050, theo SBTi' },
-      { bold: 'Carbon Offset Advisory', detail: 'tư vấn mua tín chỉ carbon, phương án bù đắp' },
+      { bold: 'Đánh giá hiện trạng xác định mục tiêu', detail: 'Xác định BAU, mục tiêu trung và dài hạn' },
+      { bold: 'Xây dựng lộ trình giảm phát thải', detail: 'Đánh giá các biện pháp khả thi và kế hoạch thực hiện theo lộ trình' },
+      { bold: 'Tư vấn bù trừ', detail: 'Khuyến nghị các phương án bù trừ bằng tín chỉ các-bon phù hợp' },
     ],
     btn: { text: 'Tư vấn lộ trình →', href: '#contact' },
     btn2: { text: 'Xem chi tiết →', href: '/giai-phap/tu-van-net-zero' },

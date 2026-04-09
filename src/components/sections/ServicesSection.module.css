@@ -43,7 +43,7 @@
 .ratingScore { font-family: var(--font-display); font-weight: 700; font-size: 14px; color: var(--brand); }
 .ratingTrack { height: 6px; background: var(--pale); border-radius: 3px; overflow: hidden; }
 .ratingFill { height: 100%; border-radius: 3px; transition: width 1.5s cubic-bezier(0.4,0,0.2,1); }
-.grade { background: linear-gradient(135deg, var(--gold), #D4AF37); color: var(--white); border-radius: 16px; padding: 24px; text-align: center; box-shadow: 0 8px 24px rgba(184,155,40,0.2); }
+.grade { background: linear-gradient(135deg, var(--forest), #2E7D32); color: var(--white); border-radius: 16px; padding: 24px; text-align: center; box-shadow: 0 8px 24px rgba(46,125,50,0.2); }
 .gradeLabel { font-size: 11px; font-weight: 700; opacity: 0.8; }
 .gradeVal { font-family: var(--font-display); font-weight: 700; font-size: 48px; line-height: 1; }
 .gradeSub { font-size: 10px; opacity: 0.7; margin-top: 4px; }
