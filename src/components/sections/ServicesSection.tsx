@@ -57,7 +57,7 @@ function RatingVisual({ lang }: { lang: string }) {
       <div className={styles.grade}>
         <div className={styles.gradeLabel}>{lang === 'vi' ? 'Xếp hạng' : 'Rating'}</div>
         <div className={styles.gradeVal}>A+</div>
-        <div className={styles.gradeSub}>{lang === 'vi' ? 'Theo tiêu chuẩn ESGreen' : 'Per ESGreen Standards'}</div>
+        <div className={styles.gradeSub}>{lang === 'vi' ? 'Theo Phương pháp luận ESGreen ver 1.1' : 'Per ESGreen Methodology ver 1.1'}</div>
       </div>
     </div>
   )
@@ -71,7 +71,7 @@ function NetZeroVisual({ lang }: { lang: string }) {
       </div>
       <div className={styles.nzStat} style={{background:'var(--forest)'}}>
         <div className={styles.nzTag}>{lang === 'vi' ? 'CAM KẾT CỦA CHÚNG TÔI' : 'OUR COMMITMENT'}</div>
-        <div className={styles.nzVal} style={{color:'var(--white)', fontSize: 18}}>{lang === 'vi' ? 'Không có lộ trình chung cho mọi doanh nghiệp.' : 'No one-size-fits-all roadmap.'}</div>
+        <div className={styles.nzVal} style={{color:'var(--white)', fontSize: 18}}>{lang === 'vi' ? 'Chiến lược bắt đầu từ dữ liệu thực, không phải tẩy xanh.' : 'Strategy starts from real data, not greenwashing.'}</div>
         <div className={styles.nzLabel} style={{color:'rgba(255,255,255,0.7)', fontStyle:'italic'}}>{lang === 'vi' ? 'Chiến lược của bạn bắt đầu từ dữ liệu thực — không phải template.' : 'Your strategy starts from real data — not templates.'}</div>
       </div>
       <div className={styles.nzImg} style={{overflow:'hidden'}}>
@@ -90,12 +90,12 @@ const servicesVi = [
   {
     id: 'svc1', bg: 'pale',
     badge: { text: 'BẮT BUỘC PHÁP LÝ', bg: '#FFF3E0', color: '#E65100' },
-    title: 'Phần mềm kiểm kê KNK',
-    desc: 'Nền tảng tính toán phát thải theo chuẩn GHG Protocol, tự động phân loại Scope 1, 2, 3 — sẵn sàng cho báo cáo nộp Bộ TN&MT.',
+    title: 'HỆ THỐNG QUẢN LÝ KHÍ NHÀ KÍNH',
+    desc: 'Nền tảng tính toán phát thải theo chuẩn hướng dẫn của Việt Nam và quốc tế — sẵn sàng đáp ứng nghĩa vụ báo cáo tuân thủ.',
     features: [
-      { bold: 'Kiểm kê tự động Scope 1, 2, 3', detail: 'theo GHG Protocol & IPCC guidelines' },
-      { bold: 'Emission Factor Database', detail: 'tích hợp sẵn hệ số phát thải VN & quốc tế' },
-      { bold: 'Xuất báo cáo đúng chuẩn', detail: 'định dạng NĐ 06/2022 & ISO 14064' },
+      { bold: 'Kiểm kê tự động phát thải trực tiếp và gián tiếp', detail: 'theo Nghị định số 06/2022/NĐ-CP, ISO 14064, IPCC' },
+      { bold: 'Tích hợp, cập nhật phương pháp luận và hệ số phát thải mới nhất', detail: '' },
+      { bold: 'Xuất báo cáo tự động chuẩn định dạng', detail: 'theo Nghị định số 06/2022/NĐ-CP và các tiêu chuẩn khác' },
     ],
     btn: { text: 'Liên hệ báo giá →', href: '#contact' },
     btn2: { text: 'Xem chi tiết →', href: '/giai-phap/kiem-ke-khi-nha-kinh' },
@@ -105,10 +105,10 @@ const servicesVi = [
     id: 'svc2', bg: 'white', reverse: true,
     badge: { text: 'ESGreen Rating', bg: '#EDF7E6', color: '#2E7D32' },
     title: 'Chấm điểm ESG tự động\nvới công nghệ AI',
-    desc: 'Hệ thống đánh giá ESG đa chiều, kết hợp AI và khung tiêu chuẩn quốc tế để cho ra xếp hạng minh bạch, có thể so sánh giữa các ngành.',
+    desc: 'Hệ thống đánh giá ESG cho doanh nghiệp và quỹ đầu tư, kết hợp AI và phương pháp luận được phát triển theo tiêu chuẩn quốc tế được cá nhân hóa cho thị trường Việt Nam, đưa ra đánh giá minh bạch.',
     features: [
-      { bold: '100+ chỉ số ESG', detail: 'phân tích theo E-S-G riêng biệt' },
-      { bold: 'AI-powered scoring', detail: 'xử lý dữ liệu & phát hiện rủi ro tự động' },
+      { bold: '+250 chỉ số ESG', detail: 'phân tích theo E-S-G riêng biệt' },
+      { bold: 'Đánh giá hỗ trợ bởi AI', detail: 'xử lý dữ liệu lớn kết hợp với chuyên gia phân tích hàng đầu' },
     ],
     btn: { text: 'Đăng ký demo', href: '#contact' },
     btn2: { text: 'Xem chi tiết →', href: '/giai-phap/cham-diem-esg' },
@@ -117,8 +117,8 @@ const servicesVi = [
   {
     id: 'svc3', bg: 'pale',
     badge: { text: 'Lộ trình Net Zero', bg: '#E3F2FD', color: '#1565C0' },
-    title: 'Tư vấn Chiến lược\nNet Zero',
-    desc: 'Từ dữ liệu kiểm kê và điểm ESG, chúng tôi xây dựng lộ trình giảm phát thải cụ thể, khả thi — hướng tới mục tiêu Net Zero theo cam kết quốc gia.',
+    title: 'Tư vấn chiến lược\nnet-zero và phát triển bền vững',
+    desc: 'Từ dữ liệu phát thải KNK, chúng tôi xây dựng lộ trình giảm phát thải cụ thể, khả thi, hướng tới mục tiêu của khách hàng.',
     features: [
       { bold: 'Baseline & Gap Analysis', detail: 'đánh giá hiện trạng, xác định mục tiêu' },
       { bold: 'Lộ trình giảm phát thải', detail: 'từng mốc 2025 → 2030 → 2050, theo SBTi' },

@@ -2,9 +2,9 @@ import styles from './DifferentiatorsSection.module.css'
 import { useLang } from '@/components/layout/Header'
 
 const cardsVi = [
-  { title: 'Pháp lý', stat: 'NĐ 06/2022 compliant', desc: 'Phần mềm đáp ứng đúng yêu cầu kiểm kê KNK theo quy định Chính phủ Việt Nam — từ phân loại nguồn phát thải đến xuất báo cáo nộp Bộ TN&MT.' },
-  { title: 'Công nghệ', stat: 'AI-powered platform', desc: 'Nền tảng tích hợp AI, tự động hóa quy trình thu thập dữ liệu, tính toán hệ số phát thải, và sinh báo cáo — giảm sai sót, tăng tốc độ.' },
-  { title: 'Chiến lược', stat: 'SBTi & Net Zero ready', desc: 'Không chỉ kiểm kê, ESGreen giúp doanh nghiệp xây lộ trình giảm phát thải, đặt mục tiêu Net Zero theo khung Science Based Targets.' },
+  { title: 'Pháp lý', stat: 'Tuân thủ yêu cầu bắt buộc', desc: 'Nền tảng đáp ứng đúng yêu cầu kiểm kê KNK theo Nghị định 06/2022/NĐ-CP và các thông tư hướng dẫn của các Bộ, sẵn sàng xuất báo cáo tuân thủ.' },
+  { title: 'Công nghệ', stat: 'Nền tảng AI-powered', desc: 'Nền tảng tích hợp AI, tự động hóa quy trình thu thập dữ liệu, tính toán và xuất báo cáo. Giảm sai sót, tăng tốc độ. Tích hợp trợ lý thông minh hỗ trợ người dùng trong từng bước.' },
+  { title: 'Chiến lược', stat: 'Tổng quan và dài hạn', desc: 'Nền tảng không chỉ hỗ trợ yêu cầu tuân thủ hiện tại mà còn được thiết kế để làm nền móng vững chắc cho các mục tiêu dài hạn của khách hàng và yêu cầu của thị trường.' },
 ]
 
 const cardsEn = [

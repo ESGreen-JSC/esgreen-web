@@ -70,8 +70,8 @@ export default function HeroSection() {
         </div>
         <p className={styles.sub}>
           {lang === 'vi'
-            ? 'ESGreen giúp doanh nghiệp kiểm kê khí nhà kính, đo lường phát thải CO2 và xây dựng báo cáo ESG theo Nghị định 06/2022/NĐ-CP.'
-            : 'ESGreen helps enterprises inventory greenhouse gases, measure CO2 emissions, and build ESG reports per Decree 06/2022/NĐ-CP.'}
+            ? 'ESGreen giúp doanh nghiệp đáp ứng nghĩa vụ tuân thủ và tiên phong trong thực hiện các sáng kiến chuyển đổi bền vững.'
+            : 'ESGreen helps enterprises meet compliance obligations and lead the way in sustainable transformation initiatives.'}
         </p>
         <p className={styles.hook}>
           {lang === 'vi'
@@ -97,11 +97,11 @@ export default function HeroSection() {
           <div className={styles.trustLogos}>
             <div className={styles.partnerItem}>
               <a href="https://eec.vn/" target="_blank" rel="noopener noreferrer"><img src="/logo/logo_VNEEC.png" alt="VNEEC" /></a>
-              <span className={styles.partnerDesc}>{lang === 'vi' ? 'Dẫn đầu thị trường CDM tại Việt Nam' : 'Leading CDM market in Vietnam'}</span>
+              <span className={styles.partnerDesc}>{lang === 'vi' ? 'Đơn vị tư vấn thị trường các-bon hàng đầu Việt Nam' : 'Leading carbon market consultancy in Vietnam'}</span>
             </div>
             <div className={styles.partnerItem}>
               <a href="https://greencic.vn/" target="_blank" rel="noopener noreferrer"><img src="/logo/Logo_GreenCIC.png" alt="GreenCIC" /></a>
-              <span className={styles.partnerDesc}>{lang === 'vi' ? 'Tổ chức tư vấn phát triển xanh hàng đầu' : 'Leading green development consultancy'}</span>
+              <span className={styles.partnerDesc}>{lang === 'vi' ? 'Tổ chức thẩm định/thẩm tra KNK và đánh giá ESG' : 'GHG verification & ESG assessment organization'}</span>
             </div>
           </div>
         </div>
@@ -114,9 +114,9 @@ export default function HeroSection() {
               </svg>
             </div>
             <div>
-              <div className={styles.statVal}>{lang === 'vi' ? '20+' : '20+'}</div>
+              <div className={styles.statVal}>30+</div>
               <div className={styles.statLabel}>
-                {lang === 'vi' ? 'năm kinh nghiệm trong lĩnh vực carbon & ESG' : 'years of experience in carbon & ESG'}
+                {lang === 'vi' ? 'năm kinh nghiệm trong lĩnh vực biến đổi khí hậu và phát triển bền vững' : 'years of experience in climate change & sustainable development'}
               </div>
             </div>
           </div>

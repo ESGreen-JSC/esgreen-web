@@ -20,18 +20,19 @@ export default function AboutSection() {
             {lang === 'vi' ? (
               <>
                 <p>
-                  Trong bối cảnh các yêu cầu về kiểm kê khí nhà kính và báo cáo ESG ngày càng rõ ràng,
-                  đặc biệt theo Nghị định 06/2022/NĐ-CP, nhiều doanh nghiệp tại Việt Nam vẫn gặp khó khăn
-                  trong việc triển khai do thiếu công cụ phù hợp và quy trình chuẩn hóa.
+                  Trong bối cảnh các yêu cầu về kiểm kê KNK và báo cáo ESG dần chuyển từ tự nguyện sang
+                  bắt buộc, đặc biệt theo Nghị định số 06/2022/NĐ-CP và yêu cầu từ chuỗi giá trị, nhiều
+                  doanh nghiệp tại Việt Nam gặp phải khó khăn trong việc triển khai do thiếu quy trình
+                  chuẩn hóa và công cụ phù hợp.
                 </p>
                 <p>
                   ESGreen được thành lập nhằm giải quyết khoảng trống này, bằng cách xây dựng các nền tảng
-                  công nghệ hỗ trợ doanh nghiệp thực hiện kiểm kê khí nhà kính và quản trị ESG theo hướng
-                  đơn giản, rõ ràng và phù hợp với điều kiện thực tế tại Việt Nam.
+                  công nghệ hỗ trợ doanh nghiệp thực hiện quản lý, kiểm kê KNK và quản trị ESG theo hướng
+                  đơn giản, phù hợp với điều kiện thực tế và đảm bảo tính tuân thủ các quy định mới nhất.
                 </p>
                 <p className={styles.closing}>
-                  Từ yêu cầu tuân thủ đến năng lực cạnh tranh — ESGreen hướng tới việc biến ESG
-                  thành lợi thế dài hạn cho doanh nghiệp.
+                  Từ yêu cầu tuân thủ đến năng lực cạnh tranh — ESGreen hướng tới việc biến phát triển
+                  bền vững thành lợi thế dài hạn cho doanh nghiệp.
                 </p>
               </>
             ) : (
@@ -59,8 +60,8 @@ export default function AboutSection() {
             <img src="/images/about-office.png" alt="ESGreen team" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '20px' }} />
           </div>
           <div className={styles.statCard}>
-            <div className={styles.statVal}>{lang === 'vi' ? 'Hàng trăm DN' : 'Hundreds of firms'}</div>
-            <div className={styles.statLab}>{lang === 'vi' ? 'Bắt buộc kiểm kê KNK từ 2024 – 2026' : 'Required GHG inventory 2024–2026'}</div>
+            <div className={styles.statVal}>{lang === 'vi' ? '2.166' : '2,166'}</div>
+            <div className={styles.statLab}>{lang === 'vi' ? 'doanh nghiệp có nghĩa vụ kiểm kê KNK từ 2024' : 'enterprises required to conduct GHG inventory from 2024'}</div>
           </div>
         </div>
       </div>

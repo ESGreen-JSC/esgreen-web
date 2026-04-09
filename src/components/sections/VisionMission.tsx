@@ -14,9 +14,9 @@ export default function VisionMission() {
           </div>
           <h3>{lang === 'vi' ? 'Tầm nhìn' : 'Vision'}</h3>
           <p>{lang === 'vi'
-            ? 'Trở thành nền tảng công nghệ hỗ trợ doanh nghiệp Việt Nam đo lường, quản lý và minh bạch hóa dữ liệu phát thải trong quá trình chuyển đổi bền vững.'
-            : 'Become the technology platform that helps Vietnamese enterprises measure, manage, and transparently report emission data throughout their sustainability transition.'}</p>
-          <div className={styles.stat}>{lang === 'vi' ? '20+ năm kinh nghiệm trong lĩnh vực carbon' : '20+ years of experience in carbon'}</div>
+            ? 'Trở thành nền tảng công nghệ hỗ trợ doanh nghiệp Việt Nam quản lý, đo đạc, báo cáo, và minh bạch hóa dữ liệu phát thải KNK, môi trường, xã hội và quản trị trong quá trình chuyển đổi bền vững.'
+            : 'Become the technology platform that helps Vietnamese enterprises manage, measure, report, and transparently disclose GHG emissions, environmental, social and governance data throughout their sustainability transition.'}</p>
+          <div className={styles.stat}>{lang === 'vi' ? '30+ năm kinh nghiệm trong lĩnh vực biến đổi khí hậu' : '30+ years of experience in climate change'}</div>
         </div>
         <div className={`${styles.card} ${styles.light}`} data-aos="fade-up" data-aos-duration="600" data-aos-delay="200">
           <span className={styles.watermark}>02</span>
@@ -27,7 +27,7 @@ export default function VisionMission() {
           <p>{lang === 'vi'
             ? 'Chuẩn hóa quy trình kiểm kê khí nhà kính và báo cáo ESG, giúp doanh nghiệp tuân thủ quy định, nâng cao năng lực quản trị và sẵn sàng cho các yêu cầu của thị trường quốc tế.'
             : 'Standardize GHG inventory and ESG reporting processes, helping enterprises comply with regulations, strengthen governance, and prepare for international market requirements.'}</p>
-          <div className={styles.stat}>{lang === 'vi' ? 'Tuân thủ Nghị định 06/2022/NĐ-CP & ISO 14064' : 'Compliant with Decree 06/2022 & ISO 14064'}</div>
+          <div className={styles.stat}>{lang === 'vi' ? 'Tuân thủ Nghị định số 06/2022/NĐ-CP, Nghị định số 119/2025/NĐ-CP, ISO 14064, CBAM, GRI' : 'Compliant with Decree 06/2022, Decree 119/2025, ISO 14064, CBAM, GRI'}</div>
         </div>
       </div>
     </section>
