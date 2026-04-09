@@ -127,7 +127,7 @@ export default function HeroSection() {
               </svg>
             </div>
             <div>
-              <div className={styles.statVal}>Nghị định 06/2022/NĐ-CP</div>
+              <div className={styles.statVal} style={{ fontSize: '15px' }}>Nghị định 06/2022/NĐ-CP</div>
               <div className={styles.statLabel}>& ISO 14064</div>
             </div>
           </div>
